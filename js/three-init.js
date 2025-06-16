@@ -92,7 +92,7 @@ const init = ( gltf ) =>
 
                 if (!e.currentTarget.classList.contains('active')) {
                     const active = container.querySelector('.active')
-                    const ind = changeModel.indexOf(e.currentTarget)
+                    const ind = Array.from(changeModel).indexOf(e.currentTarget)
 
                     if (active) { active.classList.remove('active') }
                     e.currentTarget.classList.add('active')
