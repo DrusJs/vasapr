@@ -1067,6 +1067,24 @@ body.dark-theme .burger-button path {
     height: 500px !important;
 }
 
+.change-model {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.change-model button {
+    padding: 10px 30px;
+    color: #000000;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+}
+
+.change-model button.active {
+    background-color: #FFF;
+    border-bottom: 2px solid #000;
+}
+
 .close-button {
     padding: 0;
     border: none;
