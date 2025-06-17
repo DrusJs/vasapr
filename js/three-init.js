@@ -362,7 +362,6 @@ view3d.load( 'Stul2.glb' );
 	const tabSwitcher = document.querySelectorAll('.tab-item')
 	const changeModel = document.querySelectorAll('.change-model button')
 
-	console.log(inputColors)
 
 	if (changeModel.length > 0) {
 		changeModel.forEach(el=>{

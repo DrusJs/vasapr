@@ -18,7 +18,6 @@ if (pageUpButton) {
     })
 }
 window.addEventListener('scroll', () => {
-    console.log()
     if (+window.scrollY >= 600) {
         pageUpButton.classList.remove('hide')
     } else {
