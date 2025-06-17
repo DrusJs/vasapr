@@ -111,21 +111,9 @@ if (tabSwitcher.length > 0) {
 
 if (gridColors.length > 0) {
     gridColors.forEach((grid) => {
-        const switcher = grid.querySelectorAll('.color')
         const nextBtn = grid.querySelector('.next')
         const prevBtn = grid.querySelector('.prev')
 
-
-        switcher.forEach(el=>{
-            el.addEventListener('click', (e)=>{
-                if (!e.currentTarget.classList.contains('active')) {
-                    const active = grid.querySelector('.color.active')
-
-                    if (active) { active.classList.remove('active') }
-                    e.currentTarget.classList.add('active')
-                }
-            })
-        })
 
         nextBtn.addEventListener('click', (e=>{
             const actTab = grid.querySelector('.colors-page.active')

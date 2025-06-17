@@ -368,6 +368,12 @@ if (clrChanger.length > 0) {
             el.addEventListener('click', (e)=>{
                 if (!e.currentTarget.classList.contains('active')) {
                     view3d.setModelColorByIndex( modalShowed, groupIndex, rgbToHex(e.currentTarget.style.backgroundColor) )
+
+					
+                    const active = grid.querySelector('.color.active')
+
+                    if (active) { active.classList.remove('active') }
+                    e.currentTarget.classList.add('active')
                 }
             })
         })
