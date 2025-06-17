@@ -376,7 +376,7 @@ view3d.load( 'Stul2.glb' );
 					e.currentTarget.classList.add('active')
 
 					uiChange.forEach(el => { el.style.display = 'none' })
-					uiChange[ind].style.display = 'block'
+					uiChange[ind].style.display = 'flex'
 				}
 			})
 		})
