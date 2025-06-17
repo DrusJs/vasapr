@@ -414,7 +414,7 @@ view3d.load( 'Stul2.glb' );
 
 						if (active) { active.classList.remove('active') }
 						e.currentTarget.classList.add('active')
-						view3d.setModelColorByIndex( modalShowed, 2, rgbToHex(e.currentTarget.style.backgroundColor) )
+						view3d.setModelColorByIndex( modalShowed, 0, rgbToHex(e.currentTarget.style.backgroundColor) )
 					}
 				})
 			})
