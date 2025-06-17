@@ -356,125 +356,46 @@ view3d.load( 'Stul2.glb' );
 	
 } );
 
-	const uiChange = document.querySelectorAll('.color-changer')
-	const inputColors = document.querySelectorAll('.color-changer input')
-	const gridColors = document.querySelectorAll('.color-changer .grid-colors')
-	const tabSwitcher = document.querySelectorAll('.tab-item')
-	const changeModel = document.querySelectorAll('.change-model button')
 
+const gridColors = document.querySelectorAll('.color-changer .grid-colors')
 
-	if (changeModel.length > 0) {
-		changeModel.forEach(el=>{
-			el.addEventListener('click', (e)=>{
-				const container = e.currentTarget.parentElement
+if (gridColors.length > 0) {
+    gridColors.forEach((grid, index) => {
+        const switcher = grid.querySelectorAll('.color')
+        let groupIndex = index>2?index-3:index
 
-				if (!e.currentTarget.classList.contains('active')) {
-					const active = container.querySelector('.active')
-					const ind = Array.from(changeModel).indexOf(e.currentTarget)
+		switcher.forEach(el=>{
+            el.addEventListener('click', (e)=>{
+                if (!e.currentTarget.classList.contains('active')) {
+                    view3d.setModelColorByIndex( modalShowed, groupIndex, rgbToHex(e.currentTarget.style.backgroundColor) )
+                }
+            })
+        })
 
-					if (active) { active.classList.remove('active') }
-					e.currentTarget.classList.add('active')
+	})
+}
 
-					uiChange.forEach(el => { el.style.display = 'none' })
-					uiChange[ind].style.display = 'flex'
-				}
-			})
-		})
+function rgbToHex(color) {
+	color = ""+ color;
+	if (!color || color.indexOf("rgb") < 0) {
+		return;
 	}
 
-	if (tabSwitcher.length > 0) {
-		tabSwitcher.forEach(el=>{
-			el.addEventListener('click', (e)=>{
-				const container = e.currentTarget.nextElementSibling
-				const parent = e.currentTarget.closest('.color-changer')
-
-				if (!container.classList.contains('active')) {
-					const active = parent.querySelector('.grid-colors.active')
-
-					if (active) { active.classList.remove('active') }
-					container.classList.add('active')
-					parent.querySelector('.tab-item.active').classList.remove('active')
-					e.currentTarget.classList.add('active')
-				}
-			})
-		})
+	if (color.charAt(0) == "#") {
+		return color;
 	}
 
-	if (gridColors.length > 0) {
-		gridColors.forEach((grid, index) => {
-			const switcher = grid.querySelectorAll('.color')
-			const nextBtn = grid.querySelector('.next')
-			const prevBtn = grid.querySelector('.prev')
-			let groupIndex = index>2?index-3:index
+	var nums = /(.*?)rgb\((\d+),\s*(\d+),\s*(\d+)\)/i.exec(color),
+		r = parseInt(nums[2], 10).toString(16),
+		g = parseInt(nums[3], 10).toString(16),
+		b = parseInt(nums[4], 10).toString(16);
 
-
-			switcher.forEach(el=>{
-				el.addEventListener('click', (e)=>{
-					if (!e.currentTarget.classList.contains('active')) {
-						const active = grid.querySelector('.color.active')
-
-						if (active) { active.classList.remove('active') }
-						e.currentTarget.classList.add('active')
-						view3d.setModelColorByIndex( modalShowed, groupIndex, rgbToHex(e.currentTarget.style.backgroundColor) )
-					}
-				})
-			})
-
-			nextBtn.addEventListener('click', (e=>{
-				const actTab = grid.querySelector('.colors-page.active')
-
-				prevBtn.classList.remove('disabled')
-
-				if (actTab.nextElementSibling.classList.contains('colors-page')) {
-					actTab.classList.remove('active')
-					actTab.nextElementSibling.classList.add('active')
-				}
-
-				if (!actTab.nextElementSibling.nextElementSibling) {
-					e.currentTarget.classList.add('disabled')
-				}
-			}))
-
-			prevBtn.addEventListener('click', (e=>{
-				const actTab = grid.querySelector('.colors-page.active')
-
-				nextBtn.classList.remove('disabled')
-
-				if (actTab.previousElementSibling.classList.contains('colors-page')) {
-					actTab.classList.remove('active')
-					actTab.previousElementSibling.classList.add('active')
-				}
-
-				if (!actTab.previousElementSibling.previousElementSibling.classList.contains('colors-page')) {
-					e.currentTarget.classList.add('disabled')
-				}
-			}))
-
-		})
-	}
-		
-
-	function rgbToHex(color) {
-		color = ""+ color;
-		if (!color || color.indexOf("rgb") < 0) {
-			return;
-		}
-
-		if (color.charAt(0) == "#") {
-			return color;
-		}
-
-		var nums = /(.*?)rgb\((\d+),\s*(\d+),\s*(\d+)\)/i.exec(color),
-			r = parseInt(nums[2], 10).toString(16),
-			g = parseInt(nums[3], 10).toString(16),
-			b = parseInt(nums[4], 10).toString(16);
-
-		return "#"+ (
-			(r.length == 1 ? "0"+ r : r) +
-			(g.length == 1 ? "0"+ g : g) +
-			(b.length == 1 ? "0"+ b : b)
-		);
-	}
+	return "#"+ (
+		(r.length == 1 ? "0"+ r : r) +
+		(g.length == 1 ? "0"+ g : g) +
+		(b.length == 1 ? "0"+ b : b)
+	);
+}
 
 
 

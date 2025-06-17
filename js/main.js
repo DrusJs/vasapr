@@ -65,5 +65,86 @@ if (previewOpen) {
     })
 }
 
+const uiChange = document.querySelectorAll('.color-changer')
+const inputColors = document.querySelectorAll('.color-changer input')
+const gridColors = document.querySelectorAll('.color-changer .grid-colors')
+const tabSwitcher = document.querySelectorAll('.tab-item')
+const changeModel = document.querySelectorAll('.change-model button')
+
+
+if (changeModel.length > 0) {
+    changeModel.forEach(el=>{
+        el.addEventListener('click', (e)=>{
+            const container = e.currentTarget.parentElement
+
+            if (!e.currentTarget.classList.contains('active')) {
+                const active = container.querySelector('.active')
+                const ind = Array.from(changeModel).indexOf(e.currentTarget)
+
+                if (active) { active.classList.remove('active') }
+                e.currentTarget.classList.add('active')
+
+                uiChange.forEach(el => { el.style.display = 'none' })
+                uiChange[ind].style.display = 'flex'
+            }
+        })
+    })
+}
+
+if (tabSwitcher.length > 0) {
+    tabSwitcher.forEach(el=>{
+        el.addEventListener('click', (e)=>{
+            const container = e.currentTarget.nextElementSibling
+            const parent = e.currentTarget.closest('.color-changer')
+
+            if (!container.classList.contains('active')) {
+                const active = parent.querySelector('.grid-colors.active')
+
+                if (active) { active.classList.remove('active') }
+                container.classList.add('active')
+                parent.querySelector('.tab-item.active').classList.remove('active')
+                e.currentTarget.classList.add('active')
+            }
+        })
+    })
+}
+
+if (gridColors.length > 0) {
+    gridColors.forEach((grid) => {
+        const nextBtn = grid.querySelector('.next')
+        const prevBtn = grid.querySelector('.prev')
+
+        nextBtn.addEventListener('click', (e=>{
+            const actTab = grid.querySelector('.colors-page.active')
+
+            prevBtn.classList.remove('disabled')
+
+            if (actTab.nextElementSibling.classList.contains('colors-page')) {
+                actTab.classList.remove('active')
+                actTab.nextElementSibling.classList.add('active')
+            }
+
+            if (!actTab.nextElementSibling.nextElementSibling) {
+                e.currentTarget.classList.add('disabled')
+            }
+        }))
+
+        prevBtn.addEventListener('click', (e=>{
+            const actTab = grid.querySelector('.colors-page.active')
+
+            nextBtn.classList.remove('disabled')
+
+            if (actTab.previousElementSibling.classList.contains('colors-page')) {
+                actTab.classList.remove('active')
+                actTab.previousElementSibling.classList.add('active')
+            }
+
+            if (!actTab.previousElementSibling.previousElementSibling.classList.contains('colors-page')) {
+                e.currentTarget.classList.add('disabled')
+            }
+        }))
+
+    })
+}
 
 
