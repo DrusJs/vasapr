@@ -405,6 +405,7 @@ view3d.load( 'Stul2.glb' );
 			const switcher = grid.querySelectorAll('.color')
 			const nextBtn = grid.querySelector('.next')
 			const prevBtn = grid.querySelector('.prev')
+			let groupIndex = index>2?index-3:index
 
 			console.log(index)
 
@@ -415,7 +416,7 @@ view3d.load( 'Stul2.glb' );
 
 						if (active) { active.classList.remove('active') }
 						e.currentTarget.classList.add('active')
-						view3d.setModelColorByIndex( modalShowed, 0, rgbToHex(e.currentTarget.style.backgroundColor) )
+						view3d.setModelColorByIndex( modalShowed, groupIndex, rgbToHex(e.currentTarget.style.backgroundColor) )
 					}
 				})
 			})
