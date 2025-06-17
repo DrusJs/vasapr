@@ -373,7 +373,7 @@ view3d.addEventListener( 'load', ( event ) =>
 				const container = e.currentTarget.nextElementSibling
 
 				if (!container.classList.contains('active')) {
-					const active = document.querySelector('.grid-colors.active')
+					const active = e.currentTarget.closest('.color-changer').querySelector('.grid-colors.active')
 
 					if (active) { active.classList.remove('active') }
 					container.classList.add('active')
