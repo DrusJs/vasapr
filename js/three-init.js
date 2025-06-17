@@ -386,13 +386,14 @@ view3d.load( 'Stul2.glb' );
 		tabSwitcher.forEach(el=>{
 			el.addEventListener('click', (e)=>{
 				const container = e.currentTarget.nextElementSibling
+				const parent = e.currentTarget.closest('.color-changer')
 
 				if (!container.classList.contains('active')) {
-					const active = e.currentTarget.closest('.color-changer').querySelector('.grid-colors.active')
+					const active = parent.querySelector('.grid-colors.active')
 
 					if (active) { active.classList.remove('active') }
 					container.classList.add('active')
-					document.querySelector('.tab-item.active').classList.remove('active')
+					parent.querySelector('.tab-item.active').classList.remove('active')
 					e.currentTarget.classList.add('active')
 				}
 			})
