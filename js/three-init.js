@@ -357,10 +357,10 @@ view3d.load( 'Stul2.glb' );
 } );
 
 
-const gridColors = document.querySelectorAll('.color-changer .grid-colors')
+const clrChanger = document.querySelectorAll('.color-changer .grid-colors')
 
-if (gridColors.length > 0) {
-    gridColors.forEach((grid, index) => {
+if (clrChanger.length > 0) {
+    clrChanger.forEach((grid, index) => {
         const switcher = grid.querySelectorAll('.color')
         let groupIndex = index>2?index-3:index
 
