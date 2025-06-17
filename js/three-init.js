@@ -328,6 +328,7 @@ const View3D = () =>
 
 const ui = document.querySelector( '#ui' );
 const view3d = View3D();
+let modalShowed = ''
 
 view3d.addEventListener( 'load', ( event ) =>
 {
@@ -338,7 +339,22 @@ view3d.addEventListener( 'load', ( event ) =>
 	if( id === 'Stul.glb' )
 	{
 		view3d.showModel( id );
+		modalShowed = 'Stul.glb'
 	}
+
+} );
+
+view3d.load( 'Stul.glb' );
+view3d.load( 'Stul2.glb' );
+
+[ ... document.querySelectorAll( 'button[data-model]' ) ].forEach( element => 
+{
+	element.onclick = () => {
+		view3d.showModel( element.dataset.model );
+		modalShowed = element.dataset.model
+	}
+	
+} );
 
 	const uiChange = document.querySelectorAll('.color-changer')
 	const inputColors = document.querySelectorAll('.color-changer input')
@@ -390,6 +406,8 @@ view3d.addEventListener( 'load', ( event ) =>
 			const nextBtn = grid.querySelector('.next')
 			const prevBtn = grid.querySelector('.prev')
 
+			console.log(index)
+
 			switcher.forEach(el=>{
 				el.addEventListener('click', (e)=>{
 					if (!e.currentTarget.classList.contains('active')) {
@@ -397,9 +415,7 @@ view3d.addEventListener( 'load', ( event ) =>
 
 						if (active) { active.classList.remove('active') }
 						e.currentTarget.classList.add('active')
-						console.log(modelItems)
-						console.log(modelItems[index].material, modelItems[index])
-						modelItems[index].material.color.set( rgbToHex(e.currentTarget.style.backgroundColor) )
+						view3d.setModelColorByIndex( modalShowed, 2, rgbToHex(e.currentTarget.style.backgroundColor) )
 					}
 				})
 			})
@@ -459,15 +475,6 @@ view3d.addEventListener( 'load', ( event ) =>
 			(b.length == 1 ? "0"+ b : b)
 		);
 	}
-} );
-
-view3d.load( 'Stul.glb' );
-view3d.load( 'Stul2.glb' );
-
-[ ... document.querySelectorAll( 'button[data-model]' ) ].forEach( element => 
-{
-	element.onclick = () => view3d.showModel( element.dataset.model );
-} );
 
 
 
