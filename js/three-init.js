@@ -407,7 +407,6 @@ view3d.load( 'Stul2.glb' );
 			const prevBtn = grid.querySelector('.prev')
 			let groupIndex = index>2?index-3:index
 
-			console.log(index)
 
 			switcher.forEach(el=>{
 				el.addEventListener('click', (e)=>{
