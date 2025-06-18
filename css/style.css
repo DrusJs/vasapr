@@ -1164,8 +1164,12 @@ body:has(.modal-wrapper.active) {
     .faq__items {
         grid-template-columns: 1fr;
     }
+    .change-model button {
+        padding: 6px 20px;
+        font-size: 18px;
+    }
     .change-model {
-        margin-top: 50px;
+        margin-top: 8px;
     }
     .main__title {
         font-size: 38px;
