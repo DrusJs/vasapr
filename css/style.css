@@ -968,9 +968,12 @@ body.dark-theme .burger-button path {
     display: flex;
     gap: 20px;
 }
+
+
+
 .color-changer {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 16px;
     width: 100%;
     max-width: 400px;
@@ -989,6 +992,7 @@ body.dark-theme .burger-button path {
     font-weight: 700;
     font-family: var(--font-mulishitalic);
     cursor: pointer;
+    order: -1;
 }
 .color-changer .tab-item.active {
     background-color: #113293;
@@ -1015,6 +1019,7 @@ body.dark-theme .burger-button path {
     display: none;
     position: relative;
     padding: 0 20px;
+    grid-column: span 3;
 }
 
 .grid-colors .prev {
@@ -1215,16 +1220,7 @@ body:has(.modal-wrapper.active) {
         max-width: calc(100vw - 20px);
         height: 300px !important;
     }
-    .color-changer {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-    .grid-colors {
-        grid-column: span 3;
-    }
-    .color-changer .tab-item {
-        order: -1;
-    }
+
     
     .nav {
         gap: 24px;
