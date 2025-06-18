@@ -974,6 +974,7 @@ body.dark-theme .burger-button path {
 .color-changer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 60px 266px;
     gap: 16px;
     width: 100%;
     max-width: 400px;
@@ -1162,6 +1163,9 @@ body:has(.modal-wrapper.active) {
 @media (max-width: 876px) {
     .faq__items {
         grid-template-columns: 1fr;
+    }
+    .change-model {
+        margin-top: 50px;
     }
     .main__title {
         font-size: 38px;
