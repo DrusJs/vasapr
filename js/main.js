@@ -43,11 +43,11 @@ if (document.querySelector('.header__link')) {
     })
 }
 
-const previewOpen = document.querySelector('.pref__preview')
+const constructorOpenButton = document.querySelector('.constructor-open-button')
 const modal3d = document.querySelector('#modal-constructor')
-if (previewOpen) {
+if (constructorOpenButton) {
     const closeButton = modal3d.querySelector('.close-button')
-    previewOpen.addEventListener('click', (e)=>{
+    constructorOpenButton.addEventListener('click', (e)=>{
         modal3d.classList.add('active')
     })
     modal3d.addEventListener('touchstart', (e)=>{

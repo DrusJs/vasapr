@@ -221,6 +221,14 @@ body.dark-theme .main__title_h1 {
     transition: 200ms ease-out;
 }
 
+.constructor-open-button {
+    flex-direction: column;
+    gap: 2px;
+    height: auto;
+    padding: 20px 20px;
+    text-transform: uppercase;
+}
+
 body.dark-theme .button,
 body.dark-theme .stroke__button {
     border-radius: 55px;
@@ -460,6 +468,7 @@ body.dark-theme .stroke__button:hover {
     margin-top: 80px;
     margin-left: 50px;
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
     gap: 50px;
     justify-content: space-between;
@@ -704,7 +713,9 @@ body.dark-theme .pref__block {
 
 .pref__preview {
     width: 100%;
+    object-fit: contain;
     cursor: pointer;
+    max-height: 85vh;
 }
 
 body.dark-theme .pref__preview{
@@ -1078,7 +1089,6 @@ body.dark-theme .burger-button path {
     align-items: center;
     gap: 20px;
     margin-bottom: 40px;
-    margin-top: -40px;
 }
 
 .change-model button {
@@ -1103,6 +1113,9 @@ body.dark-theme .burger-button path {
     background-color: transparent;
     cursor: pointer;
     margin-left: auto;
+    position: absolute;
+    right: 30px;
+    top: 30px;
 }
 
 body:has(.modal-wrapper.active) {
@@ -1118,6 +1131,80 @@ body:has(.modal-wrapper.active) {
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
+
+.change-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.change-group h3 {
+    font-family: var(--font-mulishitalic);
+}
+
+.change-group-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.change-group-field.change-group-field-sm {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4px 16px;
+}
+
+.change-group-field input {
+    display: none;
+}
+
+.change-group-field label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mulish);
+    cursor: pointer;
+}
+
+.change-group-field label span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    min-width: 20px;
+    height: 20px;
+    border: 1px solid #875F37;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    transition-delay: 0.1s;
+}
+
+.change-group-field label span svg {
+    fill: none;
+    stroke: white;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 16px;
+    stroke-dashoffset: 16px;
+    transition: all 0.3s ease;
+    transition-delay: 0s;
+    transition-delay: 0.1s;
+    transform: translate3d(0, 0, 0);
+}
+
+.change-group-field label:hover {
+    text-decoration: underline;
+}
+
+.change-group-field input:checked + label span {
+    background-color: #875F37;
+}
+
+.change-group-field input:checked + label span svg {
+    stroke-dashoffset: 0;
+}
+
 
 @media (max-width: 1800px) {
     .wrapper {
@@ -1296,6 +1383,10 @@ body:has(.modal-wrapper.active) {
     }
     .scroll__card {
         width: 100%;
+    }
+    .change-model {
+        flex-wrap: wrap;
+        max-width: 300px;
     }
 }
 
