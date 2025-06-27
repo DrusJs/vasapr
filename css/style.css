@@ -990,6 +990,11 @@ body.dark-theme .burger-button path {
     width: 100%;
     max-width: 400px;
 }
+
+.js-profile .color-changer {
+    grid-template-rows: 266px;
+}
+
 .color-changer .tab-item {
     width: 120px;
     text-align: center;
@@ -1005,6 +1010,9 @@ body.dark-theme .burger-button path {
     font-family: var(--font-mulishitalic);
     cursor: pointer;
     order: -1;
+}
+.js-profile .color-changer .tab-item {
+    display: none;
 }
 .color-changer .tab-item.active {
     background-color: #113293;
@@ -1133,9 +1141,13 @@ body:has(.modal-wrapper.active) {
 }
 
 .change-group {
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 10px;
+}
+
+.js-profile .change-group {
+    display: flex;
 }
 
 .change-group h3 {
@@ -1152,6 +1164,12 @@ body:has(.modal-wrapper.active) {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 4px 16px;
+}
+
+.change-group-field.change-group-field-double {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 16px;    
 }
 
 .change-group-field input {
