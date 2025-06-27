@@ -330,6 +330,22 @@ document.querySelectorAll( 'button[data-model]' ).forEach( element =>
 } );
 
 
+document.querySelectorAll( '[data-radiogroup="flat" input]' ).forEach( input => 
+{
+	input.onchange = () => view3d.setFlat( input.value === "flat" );
+	console.log(1)
+} );
+
+
+
+document.querySelectorAll( '[data-radiogroup="radius" input]' ).forEach( input => 
+{
+	input.onchange = () => view3d.setRadius( input.value );
+	console.log(2)
+} );
+
+
+
 document.querySelectorAll( '.grid-colors' )?.forEach( ( grid, index ) => 
 {
 	const switcher = grid.querySelectorAll( '.color' );
