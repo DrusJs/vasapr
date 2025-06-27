@@ -80,14 +80,23 @@ if (changeModel.length > 0) {
             if (!e.currentTarget.classList.contains('active')) {
 				container.querySelector('.active')?.classList.remove('active')
 				e.currentTarget.classList.add('active')
-                /*const active = container.querySelector('.active')
-                const ind = Array.from(changeModel).indexOf(e.currentTarget)
 
-                if (active) { active.classList.remove('active') }
-                e.currentTarget.classList.add('active')
-
-               uiChange.forEach(el => { el.style.display = 'none' })
-               uiChange[ind].style.display = 'flex'*/
+                if (e.currentTarget.dataset.model === "profile") {
+                    document.querySelectorAll('.color-changer .tab-item')[2].click()
+                    document.querySelectorAll('.color-changer .tab-item').forEach(btn=>{
+                        btn.style.display = 'none'
+                    })
+                    document.querySelectorAll('.change-group').forEach(btn=>{
+                        btn.style.display = 'none'
+                    })
+                } else {
+                    document.querySelectorAll('.color-changer .tab-item').forEach(btn=>{
+                        btn.style.display = 'block'
+                    })
+                    document.querySelectorAll('.change-group').forEach(btn=>{
+                        btn.style.display = 'block'
+                    })
+                }
             }
         })
     })
