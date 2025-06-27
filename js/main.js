@@ -83,11 +83,11 @@ if (changeModel.length > 0) {
 
                 if (e.currentTarget.dataset.model === "profile") {
                     document.querySelectorAll('.color-changer .tab-item')[2].click()
-                    document.querySelectorAll('.change-model').classList.add('js-profile')
-                    document.querySelectorAll('.constructor-flex').classList.add('js-profile')
+                    document.querySelector('.change-model').classList.add('js-profile')
+                    document.querySelector('.constructor-flex').classList.add('js-profile')
                 } else {
-                    document.querySelectorAll('.change-model').classList.remove('js-profile')
-                    document.querySelectorAll('.constructor-flex').classList.remove('js-profile')
+                    document.querySelector('.change-model').classList.remove('js-profile')
+                    document.querySelector('.constructor-flex').classList.remove('js-profile')
                 }
             }
         })
