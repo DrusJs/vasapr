@@ -1406,6 +1406,10 @@ body:has(.modal-wrapper.active) {
         flex-wrap: wrap;
         max-width: 300px;
     }
+
+    .change-group {
+        min-width: 140px;
+    }
 }
 
 @media (max-width: 576px) {    
@@ -1441,5 +1445,14 @@ body:has(.modal-wrapper.active) {
     }
     .main__title_h1.main__screen_title {
         font-size: 36px;
+    }
+
+    .change-model {
+        margin-top: 40px;
+    }
+
+    .close-button {
+        top: 6px;
+        right: 6px;
     }
 }
