@@ -1404,7 +1404,7 @@ body:has(.modal-wrapper.active) {
     }
     .change-model {
         flex-wrap: wrap;
-        max-width: 300px;
+        max-width: 360px;
     }
 
     .change-group {
