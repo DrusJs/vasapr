@@ -333,7 +333,6 @@ document.querySelectorAll( 'button[data-model]' ).forEach( element =>
 document.querySelectorAll( '.js-flat input' ).forEach( input => 
 {
 	input.onchange = () => view3d.setFlat( input.value === "flat" );
-	console.log(1)
 } );
 
 
@@ -341,7 +340,6 @@ document.querySelectorAll( '.js-flat input' ).forEach( input =>
 document.querySelectorAll( '.js-radius input' ).forEach( input => 
 {
 	input.onchange = () => view3d.setRadius( input.value );
-	console.log(2)
 } );
 
 
