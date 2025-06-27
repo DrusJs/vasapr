@@ -78,14 +78,16 @@ if (changeModel.length > 0) {
             const container = e.currentTarget.parentElement
 
             if (!e.currentTarget.classList.contains('active')) {
-                const active = container.querySelector('.active')
+				container.querySelector('.active')?.classList.remove('active')
+				e.currentTarget.classList.add('active')
+                /*const active = container.querySelector('.active')
                 const ind = Array.from(changeModel).indexOf(e.currentTarget)
 
                 if (active) { active.classList.remove('active') }
                 e.currentTarget.classList.add('active')
 
-                uiChange.forEach(el => { el.style.display = 'none' })
-                uiChange[ind].style.display = 'flex'
+               uiChange.forEach(el => { el.style.display = 'none' })
+               uiChange[ind].style.display = 'flex'*/
             }
         })
     })

@@ -14,80 +14,122 @@ const View3D = () =>
 	let viewportHeight = 1;
 	let viewportVisible = viewportContainer.checkVisibility();
 	let renderer, camera, scene, light, ground, container, controls;
+	let radius = 2;
+	let flat = true;
 	
 	const models = [];
+	const colors = [ new THREE.Color(), new THREE.Color(), new THREE.Color() ];
+	const segments = 16;
 	
-	const load = ( url ) =>
+	const getFlat = () => flat;
+	const setFlat = ( value ) =>
 	{
-		models[ url ] = { materials:[], scene:null, loaded:false, visible:false };
+		value = !!value;
 		
-		loader.load
-		(
-			url,
-			( gltf ) => onload( url, gltf ),
-			null,
-			( error ) => console.trace( error )
-		);
-	};
-	
-	const getModelColorList = ( id ) =>
-	{
-		const model = models[ id ];
-		
-		if( model )
+		if( value != flat )
 		{
-			const colors = [];
+			flat = value;
 			
-			model.materials.forEach( material => colors.push( '#' + material.color.getHexString() ) );
-			
-			return colors;
-		}
+			const model = models[ 'profile' ];
 		
-		return null;
-	};
-	
-	const getModelColorByIndex = ( id, index ) =>
-	{
-		const model = models[ id ];
-		
-		if( model )
-		{
-			const material = model.materials[ index ];
-			
-			if( material )
+			if( model )
 			{
-				return '#' + material.color.getHexString();
+				const { box, cylinder } = model;
+				
+				box.visible = flat;
+				cylinder.visible = !flat;
 			}
 		}
-		
-		return null;
 	};
 	
-	const setModelColorByIndex = ( id, index, color ) =>
+	const getRadius = ()=> radius;
+	const setRadius = ( value ) =>
 	{
-		const model = models[ id ];
+		value = Math.round( value );
 		
-		if( model )
+		if( Number.isFinite( value ) )
 		{
-			const material = model.materials[ index ];
-			
-			if( material )
+			if( value !== radius && [ 2, 3, 4, 5, 6, 7 ].includes( value ) )
 			{
-				material.color.set( color );
+				radius = value;
+				
+				const model = models[ 'profile' ];
+		
+				if( model )
+				{
+					const { box, cylinder } = model;
+					
+					box.geometry?.dispose();
+					box.geometry = new THREE.BoxGeometry( radius * 10, radius * 10, 500 );
+					
+					cylinder.geometry?.dispose();
+					cylinder.geometry = new THREE.CylinderGeometry( radius * 10, radius * 10, 500, segments );
+				}
 			}
+		}
+	};
+	
+	const load = ( id, url ) =>
+	{
+		if( models[ id ] == null )
+		{
+			if( id === 'profile' )
+			{
+				const group = new THREE.Group();
+				const material = new THREE.MeshStandardMaterial( { color:'#' + colors[ 2 ].getHexString(), envMap } );
+				const box = new THREE.Mesh( new THREE.BoxGeometry( radius * 10, radius * 10, 500 ), material );
+				const cylinder = new THREE.Mesh( new THREE.CylinderGeometry( radius * 10, radius * 10, 500, segments ), material );
+				
+				box.visible = flat;
+
+				cylinder.visible = !flat;
+				cylinder.rotateX( Math.PI / 2 );
+				
+				group.add( box, cylinder );
+				group.visible = false;
+				
+				models[ id ] = { materials:[ null, null, material ], scene:group, visible:false, box, cylinder };
+				
+				container.add( group );
+			}
+			else 
+			{
+				models[ id ] = { materials:[], scene:null, visible:false };
+				
+				loader.load( url, gltf => onload( id, gltf ), null, error => console.trace( error ) );
+			}
+		}
+	};
+	
+	const getColorList = () =>
+	{
+		const _colors = [];		
+		
+		colors.forEach( color => _colors.push( '#' + color.getHexString() ) );	
+		
+		return colors;
+	};
+	
+	const getColorByIndex = ( index ) => getColorList()[ index ];
+	
+	const setColorByIndex = ( index, color ) =>
+	{
+		if( index >= 0 && index < colors.length )
+		{
+			colors[ index ].set( color );			
+			
+			Object.values( models ).forEach( model => model.materials[ index ]?.color?.copy( colors[ index ] ) );
 		}
 	};
 	
 	const showModel = ( _id ) =>
 	{
 		let hasVisible = false;
-		
+
 		for( const [ id, model ] of Object.entries( models ) ) 
 		{
 			model.visible = ( _id === id );
-			
-			// console.log( id, _id, model.visible );
-			
+
 			if( model.scene )
 				model.scene.visible = model.visible;
 			
@@ -117,6 +159,7 @@ const View3D = () =>
 				if( mesh.material && !materials.includes( mesh.material ) && mesh.material.type == 'MeshStandardMaterial' )
 				{
 					mesh.material.envMap = envMap;
+					
 					materials.push( mesh.material );
 				}
 			}
@@ -124,38 +167,17 @@ const View3D = () =>
 		
 		container.add( model.scene );
 		
-		instance.dispatchEvent( { type:'load', id } );
+		let loaded = true;
 		
-		/*object = gltf.scene;
-		
-		const modelItems = new Array
-		object.traverse( mesh => 
-		{   
-			if( mesh.isMesh )
-			{
-				mesh.castShadow = true;
-				
-				if( mesh.material && mesh.material.type == 'MeshStandardMaterial' )
-				{
-					console.log( mesh.material );
-
-					mesh.material.envMap = envMap;
-					
-					const input = document.createElement( 'input' );
-					input.classList.add('hidden')
-					
-					input.type = 'color';
-					input.value = '#' + mesh.material.color.getHexString();
-					input.oninput = () => mesh.material.color.set( input.value ), console.log(input.value);
-					input.onchange = () => mesh.material.color.set( input.value ), console.log(input.value);
-				
-					
-					ui.appendChild( input );
-					modelItems.unshift(mesh)
-				}
-			}
+		Object.values( models ).forEach( model =>
+		{
+			loaded &&= ( model.scene instanceof THREE.Object3D );
 		} );
-		container.add( object );*/
+
+		if( loaded )
+		{
+			instance.dispatchEvent( { type:'load' } );
+		}
 	};
 
 	const setSize = ( w, h ) =>
@@ -180,7 +202,6 @@ const View3D = () =>
 			canvas:viewport
 		} );
 
-
 		renderer.shadowMap.enabled = true;
 		renderer.shadowMap.autoUpdate = false;
 		renderer.shadowMap.type = THREE.VSMShadowMap;
@@ -204,6 +225,7 @@ const View3D = () =>
 		controls.enablePan = false;
 		controls.enableKeys = false;
 		controls.enableDamping = true;
+		controls.dampingFactor = 0.1;
 		controls.minPolarAngle = controls.maxPolarAngle = Math.PI / 180 * 55;
 		controls.update();
 
@@ -212,66 +234,27 @@ const View3D = () =>
 		controls.minAzimuthAngle = -Infinity;
 		controls.maxAzimuthAngle = Infinity;
 
-		//createGroundAndShadowLight();
-
 		render();
-	};
-
-	/*const createGroundAndShadowLight = () =>
-	{
-		const box = new THREE.Box3();
-
-		box.expandByObject( container );
-
-		const size = box.getSize( new THREE.Vector3() );
-		const maxSize = Math.max( size.x, size.z );
-		const center = box.getCenter( new THREE.Vector3() );
-		const offset = maxSize / 10;
 		
-		console.log( size );
-
-		const geometry = new THREE.PlaneGeometry( size.x + offset * 2, size.z + offset * 2, 16, 16 );
-
-		geometry.rotateX( Math.PI / 180 * -90 );
-		geometry.translate( center.x, center.y - size.y / 2, center.z );
-
-		const material = new THREE.ShadowMaterial();
-
-		material.opacity = 0.15;
-
-		ground = new THREE.Mesh( geometry, material );
-		ground.receiveShadow = true;
-
-		scene.add( ground );
-
-		light = new THREE.DirectionalLight( 0xFFFFFF, 0.1 );
-		light.position.set( center.x,  center.y + size.y / 2 + 1, center.z );
-		light.castShadow = true;
-		light.shadow.camera.left = -size.x / 2 - offset;
-		light.shadow.camera.right = size.x / 2 + offset;
-		light.shadow.camera.top = -size.z / 2 - offset;
-		light.shadow.camera.bottom = size.z / 2 + offset;
-		light.shadow.camera.near = 1;
-		light.shadow.camera.far = size.y + 2;
-		light.shadow.bias = -0.000222;
-		light.shadow.mapSize.width =
-		light.shadow.mapSize.height = 256;
-		light.shadow.radius = 8;
-
-		light.target.position.set( center.x, center.y - size.y / 2, center.z );
-
-		scene.add( light.target );
-		scene.add( light );
-		// scene.add( new THREE.CameraHelper( light.shadow.camera ) ); // TEST
-
-		renderer.shadowMap.needsUpdate = true;
-	}*/
+		load( 'profile', null );
+		load( 'stool1', 'Stul.glb' );
+		load( 'stool2', 'Stul2.glb' );
+	};
 
 	const fitToScreen = () =>
 	{
 		container.updateMatrixWorld( true );
-		 
-		const box = new THREE.Box3().expandByObject( container );
+		
+		const box = new THREE.Box3();
+		
+		Object.values( models ).forEach( model => 
+		{
+			if( model.visible && model.scene )
+			{
+				box.expandByObject( model.scene )
+			}
+		} );
+
 		const size = box.getSize( new THREE.Vector3() );
 		const center = box.getCenter( new THREE.Vector3() );
 		const maxSize = Math.max( size.x, size.y, size.z );
@@ -296,29 +279,29 @@ const View3D = () =>
 	const render = ( timestamp ) =>
 	{
 		const hasChanges = viewportContainer.checkVisibility() != viewportVisible || viewportContainer.offsetWidth != viewportWidth || viewportContainer.offsetHeight != viewportHeight;
-							
+			
+		viewportVisible = viewportContainer.checkVisibility();
+		
 		if( hasChanges || timestamp === undefined )
 		{
-			viewportVisible = viewportContainer.checkVisibility();
-			
 			if( viewportVisible )
 			{
 				setSize( Math.max( 1, viewportContainer.offsetWidth ), Math.max( 1, viewportContainer.offsetHeight ) );
 				fitToScreen();
 			}
 		}
-		else
+		
+		if( viewportVisible )
 		{
 			controls.update();
+			camera.updateMatrixWorld( true );
+			renderer.render( scene, camera );
 		}
-
-		camera.updateMatrixWorld( true );
-
-		renderer.render( scene, camera );
+		
 		requestAnimationFrame( render );
 	};
 	
-	Object.assign( instance, { load, showModel, getModelColorList, getModelColorByIndex, setModelColorByIndex } );
+	Object.assign( instance, { showModel, getColorList, getColorByIndex, setColorByIndex, getFlat, setFlat, getRadius, setRadius } );
 	
 	init();
 	
@@ -326,82 +309,50 @@ const View3D = () =>
 }
 
 
-const ui = document.querySelector( '#ui' );
 const view3d = View3D();
-let modalShowed = ''
 
 view3d.addEventListener( 'load', ( event ) =>
 {
-	const { id } = event;
-	
-	console.log( 'loaded', id, view3d.getModelColorList( id ) );
-	
-	if( id === 'Stul.glb' )
-	{
-		view3d.showModel( id );
-		modalShowed = 'Stul.glb'
-	}
-
+	// TODO: нужно связать с радиокнопками!
+	view3d.setRadius( 2 );
+	view3d.setFlat( false );
 } );
 
-view3d.load( 'Stul.glb' );
-view3d.load( 'Stul2.glb' );
-
-[ ... document.querySelectorAll( 'button[data-model]' ) ].forEach( element => 
+document.querySelectorAll( 'button[data-model]' ).forEach( element => 
 {
-	element.onclick = () => {
+	element.onclick = () => view3d.showModel( element.dataset.model );
+
+	if( element.classList.contains( 'active' ) )
+	{
+		// показываем модель связанную с активной вкладкой!
 		view3d.showModel( element.dataset.model );
-		modalShowed = element.dataset.model
 	}
-	
 } );
 
 
-const clrChanger = document.querySelectorAll('.color-changer .grid-colors')
+document.querySelectorAll( '.grid-colors' )?.forEach( ( grid, index ) => 
+{
+	const switcher = grid.querySelectorAll( '.color' );
+	const active = grid.querySelector( '.color.active' );
 
-if (clrChanger.length > 0) {
-    clrChanger.forEach((grid, index) => {
-        const switcher = grid.querySelectorAll('.color')
-        let groupIndex = index>2?index-3:index
-
-		switcher.forEach(el=>{
-            el.addEventListener('click', (e)=>{
-                if (!e.currentTarget.classList.contains('active')) {
-                    view3d.setModelColorByIndex( modalShowed, groupIndex, rgbToHex(e.currentTarget.style.backgroundColor) )
-
-					
-                    const active = grid.querySelector('.color.active')
-
-                    if (active) { active.classList.remove('active') }
-                    e.currentTarget.classList.add('active')
-                }
-            })
-        })
-
-	})
-}
-
-function rgbToHex(color) {
-	color = ""+ color;
-	if (!color || color.indexOf("rgb") < 0) {
-		return;
+	switcher.forEach( element =>
+	{
+		element.addEventListener( 'click', event =>
+		{
+			if( !event.currentTarget.classList.contains( 'active' ) ) 
+			{
+				view3d.setColorByIndex( index, event.currentTarget.style.backgroundColor );
+				grid.querySelector( '.color.active' )?.classList.remove( 'active' );			
+				event.currentTarget.classList.add( 'active' );
+			}
+		} );
+	} );
+	
+	if( active )
+	{
+		// В index.html добавил цвет по умолчанию в каждую палитру цветов ( .color.active )
+		view3d.setColorByIndex( index, active.style.backgroundColor );
 	}
-
-	if (color.charAt(0) == "#") {
-		return color;
-	}
-
-	var nums = /(.*?)rgb\((\d+),\s*(\d+),\s*(\d+)\)/i.exec(color),
-		r = parseInt(nums[2], 10).toString(16),
-		g = parseInt(nums[3], 10).toString(16),
-		b = parseInt(nums[4], 10).toString(16);
-
-	return "#"+ (
-		(r.length == 1 ? "0"+ r : r) +
-		(g.length == 1 ? "0"+ g : g) +
-		(b.length == 1 ? "0"+ b : b)
-	);
-}
-
+} );
 
 

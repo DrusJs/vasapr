@@ -351,12 +351,13 @@
                 </svg>
             </button>
             <div class="change-model">
-                <button class="active" data-model="Stul.glb">Chair</button>
-                <button data-model="Stul2.glb">Armchair</button>
+                <button data-model="stool1" >Chair</button>
+                <button data-model="stool2" class="active">Armchair</button>
+				<button data-model="profile">Profile</button>
                 <div class="change-group">
                     <h3>Type of waste</h3>
                     <div class="change-group-field">
-                        <input type="checkbox" name="type" id="type1">
+                        <input type="radio" name="type" id="type1">
                         <label for="type1">
                             <span>
                                 <svg width="12px" height="9px" viewBox="0 0 12 9">
@@ -365,7 +366,7 @@
                             </span>
                             flat
                         </label>                        
-                        <input type="checkbox" name="type" id="type2">
+                        <input type="radio" name="type" id="type2">
                         <label for="type2">
                             <span>
                                 <svg width="12px" height="9px" viewBox="0 0 12 9">
@@ -379,7 +380,7 @@
                 <div class="change-group">
                     <h3>Diameter</h3>
                     <div class="change-group-field change-group-field-sm">
-                        <input type="checkbox" name="size" id="size1">
+                        <input type="radio" name="size" id="size1">
                         <label for="size1">
                             <span>
                                 <svg width="12px" height="9px" viewBox="0 0 12 9">
@@ -388,7 +389,7 @@
                             </span>2
                         </label>
                         
-                        <input type="checkbox" name="size" id="size2">
+                        <input type="radio" name="size" id="size2">
                         <label for="size2">
                             <span>
                                 <svg width="12px" height="9px" viewBox="0 0 12 9">
@@ -397,7 +398,7 @@
                             </span>3
                         </label>
                         
-                        <input type="checkbox" name="size" id="size3">
+                        <input type="radio" name="size" id="size3">
                         <label for="size3">
                             <span>
                                 <svg width="12px" height="9px" viewBox="0 0 12 9">
@@ -406,7 +407,7 @@
                             </span>4
                         </label>
                         
-                        <input type="checkbox" name="size" id="size4">
+                        <input type="radio" name="size" id="size4">
                         <label for="size4">
                             <span>
                                 <svg width="12px" height="9px" viewBox="0 0 12 9">
@@ -415,7 +416,7 @@
                             </span>5
                         </label>
                         
-                        <input type="checkbox" name="size" id="size5">
+                        <input type="radio" name="size" id="size5">
                         <label for="size5">
                             <span>
                                 <svg width="12px" height="9px" viewBox="0 0 12 9">
@@ -424,7 +425,7 @@
                             </span>6
                         </label>
                         
-                        <input type="checkbox" name="size" id="size6">
+                        <input type="radio" name="size" id="size6">
                         <label for="size6">
                             <span>
                                 <svg width="12px" height="9px" viewBox="0 0 12 9">
@@ -449,7 +450,7 @@
                             <div class="color white" style="background-color: #154889;">RAL 5005</div>
                             <div class="color white" style="background-color: #2b2c7c;">RAL 5002</div>
                             <div class="color white" style="background-color: #44322d;">RAL 8017</div>
-                            <div class="color white" style="background-color: #000000;">RAL 9005</div>
+                            <div class="color white active" style="background-color: #000000;">RAL 9005</div>
                             <div class="color" style="background-color: #FFFFFF;">RAL 9010</div>
                         </div>
                         <div class="colors-page">
@@ -488,7 +489,7 @@
                             <div class="color white" style="background-color: #2b2c7c;">RAL 5002</div>
                             <div class="color white" style="background-color: #44322d;">RAL 8017</div>
                             <div class="color white" style="background-color: #000000;">RAL 9005</div>
-                            <div class="color" style="background-color: #FFFFFF;">RAL 9010</div>
+                            <div class="color active" style="background-color: #FFFFFF;">RAL 9010</div>
                         </div>
                         <div class="colors-page">
                             <div class="color white" style="background-color: #480436;">RAL 4007</div>
@@ -536,7 +537,7 @@
                             <div class="color white" style="background-color: #48533c;">RAL 6003</div>
                             <div class="color white" style="background-color: #701f29;">RAL 3004</div>
                             <div class="color" style="background-color: #e75b12;">RAL 2004</div>
-                            <div class="color" style="background-color: #f7ba0b">RAL 1003</div>
+                            <div class="color active" style="background-color: #f7ba0b">RAL 1003</div>
                             <div class="color" style="background-color: #eec900;">RAL 1021</div>
                         </div>
                         <div class="colors-page">
@@ -552,123 +553,7 @@
                         </div>
                     </div>
                 </div>        
-                <div class="color-changer" id="ui2" style="display: none;">
-                    <span class="tab-item active">Crop</span>
-                    <div class="grid-colors active">
-                        <div class="prev disabled"></div>
-                        <div class="next"></div>
-                        <div class="colors-page active">
-                            <div class="color" style="background-color: #c1121c;">RAL 3020</div>
-                            <div class="color" style="background-color: #f3752c;">RAL 2008</div>
-                            <div class="color" style="background-color: #eaf044;">RAL 1016 </div>
-                            <div class="color" style="background-color: #008f39;">RAL 6037</div>
-                            <div class="color white" style="background-color: #154889;">RAL 5005</div>
-                            <div class="color white" style="background-color: #2b2c7c;">RAL 5002</div>
-                            <div class="color white" style="background-color: #44322d;">RAL 8017</div>
-                            <div class="color white" style="background-color: #000000;">RAL 9005</div>
-                            <div class="color" style="background-color: #FFFFFF;">RAL 9010</div>
-                        </div>
-                        <div class="colors-page">
-                            <div class="color white" style="background-color: #480436;">RAL 4007</div>
-                            <div class="color" style="background-color: #d14152;">RAL 3018</div>
-                            <div class="color" style="background-color: #c1121c;">RAL 3020 </div>
-                            <div class="color white" style="background-color: #ab2524;">RAL 3000</div>
-                            <div class="color white" style="background-color: #48533c;">RAL 6003</div>
-                            <div class="color white" style="background-color: #701f29;">RAL 3004</div>
-                            <div class="color" style="background-color: #e75b12;">RAL 2004</div>
-                            <div class="color" style="background-color: #f7ba0b">RAL 1003</div>
-                            <div class="color" style="background-color: #eec900;">RAL 1021</div>
-                        </div>
-                        <div class="colors-page">
-                            <div class="color white" style="background-color: #008754;">RAL 6024</div>
-                            <div class="color white" style="background-color: #0f4336;">RAL 6005</div>
-                            <div class="color white" style="background-color: #31403d;">RAL 6012 </div>
-                            <div class="color white" style="background-color: #07737a;">RAL 5021</div>
-                            <div class="color white" style="background-color: #154889;">RAL 5005</div>
-                            <div class="color white" style="background-color: #2a3756;">RAL 5003</div>
-                            <div class="color white" style="background-color: #154889;">RAL 5005</div>
-                            <div class="color white" style="background-color: #596163">RAL 7012</div>
-                            <div class="color white" style="background-color: #7e8182;">RAL 9023</div>
-                        </div>
-                    </div>
-                    <span class="tab-item">Base</span>
-                    <div class="grid-colors">
-                        <div class="prev disabled"></div>
-                        <div class="next"></div>
-                        <div class="colors-page active">
-                            <div class="color" style="background-color: #c1121c;">RAL 3020</div>
-                            <div class="color" style="background-color: #f3752c;">RAL 2008</div>
-                            <div class="color" style="background-color: #eaf044;">RAL 1016 </div>
-                            <div class="color" style="background-color: #008f39;">RAL 6037</div>
-                            <div class="color white" style="background-color: #154889;">RAL 5005</div>
-                            <div class="color white" style="background-color: #2b2c7c;">RAL 5002</div>
-                            <div class="color white" style="background-color: #44322d;">RAL 8017</div>
-                            <div class="color white" style="background-color: #000000;">RAL 9005</div>
-                            <div class="color" style="background-color: #FFFFFF;">RAL 9010</div>
-                        </div>
-                        <div class="colors-page">
-                            <div class="color white" style="background-color: #480436;">RAL 4007</div>
-                            <div class="color" style="background-color: #d14152;">RAL 3018</div>
-                            <div class="color" style="background-color: #c1121c;">RAL 3020 </div>
-                            <div class="color white" style="background-color: #ab2524;">RAL 3000</div>
-                            <div class="color white" style="background-color: #48533c;">RAL 6003</div>
-                            <div class="color white" style="background-color: #701f29;">RAL 3004</div>
-                            <div class="color" style="background-color: #e75b12;">RAL 2004</div>
-                            <div class="color" style="background-color: #f7ba0b">RAL 1003</div>
-                            <div class="color" style="background-color: #eec900;">RAL 1021</div>
-                        </div>
-                        <div class="colors-page">
-                            <div class="color white" style="background-color: #008754;">RAL 6024</div>
-                            <div class="color white" style="background-color: #0f4336;">RAL 6005</div>
-                            <div class="color white" style="background-color: #31403d;">RAL 6012 </div>
-                            <div class="color white" style="background-color: #07737a;">RAL 5021</div>
-                            <div class="color white" style="background-color: #154889;">RAL 5005</div>
-                            <div class="color white" style="background-color: #2a3756;">RAL 5003</div>
-                            <div class="color white" style="background-color: #154889;">RAL 5005</div>
-                            <div class="color white" style="background-color: #596163">RAL 7012</div>
-                            <div class="color white" style="background-color: #7e8182;">RAL 9023</div>
-                        </div>
-                    </div>
-                    <span class="tab-item">Slub</span>
-                    <div class="grid-colors">
-                        <div class="prev disabled"></div>
-                        <div class="next"></div>
-                        <div class="colors-page active">
-                            <div class="color" style="background-color: #c1121c;">RAL 3020</div>
-                            <div class="color" style="background-color: #f3752c;">RAL 2008</div>
-                            <div class="color" style="background-color: #eaf044;">RAL 1016 </div>
-                            <div class="color" style="background-color: #008f39;">RAL 6037</div>
-                            <div class="color white" style="background-color: #154889;">RAL 5005</div>
-                            <div class="color white" style="background-color: #2b2c7c;">RAL 5002</div>
-                            <div class="color white" style="background-color: #44322d;">RAL 8017</div>
-                            <div class="color white" style="background-color: #000000;">RAL 9005</div>
-                            <div class="color" style="background-color: #FFFFFF;">RAL 9010</div>
-                        </div>
-                        <div class="colors-page">
-                            <div class="color white" style="background-color: #480436;">RAL 4007</div>
-                            <div class="color" style="background-color: #d14152;">RAL 3018</div>
-                            <div class="color" style="background-color: #c1121c;">RAL 3020 </div>
-                            <div class="color white" style="background-color: #ab2524;">RAL 3000</div>
-                            <div class="color white" style="background-color: #48533c;">RAL 6003</div>
-                            <div class="color white" style="background-color: #701f29;">RAL 3004</div>
-                            <div class="color" style="background-color: #e75b12;">RAL 2004</div>
-                            <div class="color" style="background-color: #f7ba0b">RAL 1003</div>
-                            <div class="color" style="background-color: #eec900;">RAL 1021</div>
-                        </div>
-                        <div class="colors-page">
-                            <div class="color white" style="background-color: #008754;">RAL 6024</div>
-                            <div class="color white" style="background-color: #0f4336;">RAL 6005</div>
-                            <div class="color white" style="background-color: #31403d;">RAL 6012 </div>
-                            <div class="color white" style="background-color: #07737a;">RAL 5021</div>
-                            <div class="color white" style="background-color: #154889;">RAL 5005</div>
-                            <div class="color white" style="background-color: #2a3756;">RAL 5003</div>
-                            <div class="color white" style="background-color: #154889;">RAL 5005</div>
-                            <div class="color white" style="background-color: #596163">RAL 7012</div>
-                            <div class="color white" style="background-color: #7e8182;">RAL 9023</div>
-                        </div>
-                    </div>
-                </div>
-                <div id="viewportContainer" class="view-model">
+               <div id="viewportContainer" class="view-model">
                     <canvas id="viewport"></canvas>
                 </div>
             </div>
