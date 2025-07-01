@@ -258,9 +258,9 @@ const View3D = () =>
 
 		render();
 		
+		load( 'profile', null );
 		load( 'stool1', 'Stul.glb' );
 		load( 'stool2', 'Stul2.glb' );
-		load( 'profile', null );
 	};
 
 	const fitToScreen = () =>
@@ -385,7 +385,6 @@ document.querySelectorAll( '.js-radius input' ).forEach( input =>
 
 document.querySelectorAll( '.js-size input' ).forEach( input => 
 {
-	console.log(input.value.split(' ')[0], input.value.split(' ')[1])
 	input.onchange = () => view3d.setProfileSize( input.value.split(' ')[0], input.value.split(' ')[1] );
 } );
 
