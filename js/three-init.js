@@ -14,21 +14,26 @@ const View3D = () =>
 	let viewportHeight = 1;
 	let viewportVisible = viewportContainer.checkVisibility();
 	let renderer, camera, scene, light, ground, container, controls;
-	let radius = 2;
-	let flat = true;
+	let profileDiameter = 2;
+	let profileWidth = 5;
+	let profileHeight = 1;
+	let isProfileFlat = true;
 	
 	const models = [];
 	const colors = [ new THREE.Color(), new THREE.Color(), new THREE.Color() ];
-	const segments = 16;
+	const segments = 32;
+	const profileDepth = 300;
 	
-	const getFlat = () => flat;
-	const setFlat = ( value ) =>
+	const getProfileWidth = () => profileWidth;
+	const getProfileHeight = () => profileHeight;
+	const getProfileFlat = () => isProfileFlat;
+	const setProfileFlat = ( value ) =>
 	{
 		value = !!value;
 		
-		if( value != flat )
+		if( value != isProfileFlat )
 		{
-			flat = value;
+			isProfileFlat = value;
 			
 			const model = models[ 'profile' ];
 		
@@ -36,34 +41,51 @@ const View3D = () =>
 			{
 				const { box, cylinder } = model;
 				
-				box.visible = flat;
-				cylinder.visible = !flat;
+				box.visible = isProfileFlat;
+				cylinder.visible = !isProfileFlat;
+			}
+		}
+	};
+	const setProfileSize = ( w, h ) =>
+	{
+		w = Math.round( w );
+		h = Math.round( h );
+		
+		if( Number.isFinite( w ) && Number.isFinite( h ) )
+		{
+			if( w >= 1 && w < 50 && h >= 1 && h < 50 )
+			{
+				profileWidth = w;
+				profileHeight = h;
+				
+				const model = models[ 'profile' ];
+				const { box } = model;
+				
+				box.geometry?.dispose();
+				box.geometry = new THREE.BoxGeometry( profileWidth * 10, profileHeight * 10, profileDepth );
 			}
 		}
 	};
 	
-	const getRadius = ()=> radius;
-	const setRadius = ( value ) =>
+	const getProfileDiameter = ()=> profileDiameter;
+	const setProfileDiameter = ( value ) =>
 	{
 		value = Math.round( value );
 		
 		if( Number.isFinite( value ) )
 		{
-			if( value !== radius && [ 2, 3, 4, 5, 6, 7 ].includes( value ) )
+			if( value !== profileDiameter && [ 2, 3, 4, 5, 6, 7 ].includes( value ) )
 			{
-				radius = value;
+				profileDiameter = value;
 				
 				const model = models[ 'profile' ];
 		
 				if( model )
 				{
-					const { box, cylinder } = model;
-					
-					box.geometry?.dispose();
-					box.geometry = new THREE.BoxGeometry( radius * 10, radius * 10, 500 );
-					
+					const { cylinder } = model;
+
 					cylinder.geometry?.dispose();
-					cylinder.geometry = new THREE.CylinderGeometry( radius * 10, radius * 10, 500, segments );
+					cylinder.geometry = new THREE.CylinderGeometry( profileDiameter * 5, profileDiameter * 5, profileDepth, segments );
 				}
 			}
 		}
@@ -77,12 +99,12 @@ const View3D = () =>
 			{
 				const group = new THREE.Group();
 				const material = new THREE.MeshStandardMaterial( { color:'#' + colors[ 2 ].getHexString(), envMap } );
-				const box = new THREE.Mesh( new THREE.BoxGeometry( radius * 10, radius * 10, 500 ), material );
-				const cylinder = new THREE.Mesh( new THREE.CylinderGeometry( radius * 10, radius * 10, 500, segments ), material );
+				const box = new THREE.Mesh( new THREE.BoxGeometry( profileWidth * 10, profileHeight * 10, profileDepth ), material );
+				const cylinder = new THREE.Mesh( new THREE.CylinderGeometry( profileDiameter * 5, profileDiameter * 5, profileDepth, segments ), material );
 				
-				box.visible = flat;
+				box.visible = isProfileFlat;
 
-				cylinder.visible = !flat;
+				cylinder.visible = !isProfileFlat;
 				cylinder.rotateX( Math.PI / 2 );
 				
 				group.add( box, cylinder );
@@ -301,7 +323,14 @@ const View3D = () =>
 		requestAnimationFrame( render );
 	};
 	
-	Object.assign( instance, { showModel, getColorList, getColorByIndex, setColorByIndex, getFlat, setFlat, getRadius, setRadius } );
+	Object.assign( instance, 
+	{ 
+		showModel, 
+		getColorList, getColorByIndex, setColorByIndex, 
+		getProfileFlat, setProfileFlat, 
+		getProfileDiameter, setProfileDiameter,
+		getProfileWidth, getProfileHeight, setProfileSize,
+	} );
 	
 	init();
 	
@@ -314,8 +343,9 @@ const view3d = View3D();
 view3d.addEventListener( 'load', ( event ) =>
 {
 	// TODO: нужно связать с радиокнопками!
-	view3d.setRadius( 2 );
-	view3d.setFlat( false );
+	view3d.setProfileSize( 7, 2 );
+	view3d.setProfileDiameter( 2 );
+	view3d.setProfileFlat( false );
 } );
 
 document.querySelectorAll( 'button[data-model]' ).forEach( element => 
@@ -332,14 +362,30 @@ document.querySelectorAll( 'button[data-model]' ).forEach( element =>
 
 document.querySelectorAll( '.js-flat input' ).forEach( input => 
 {
-	input.onchange = () => view3d.setFlat( input.value === "flat" );
+	input.onchange = () => {
+		view3d.setProfileFlat( input.value === "flat" );
+		if (input.value === "flat") {
+			document.querySelector('.js-groupname').textContent = 'Size'
+			document.querySelector('.js-radius').style.display = 'none'
+			document.querySelector('.js-size').style.display = 'grid'
+		} else {
+			document.querySelector('.js-groupname').textContent = 'Size'
+			document.querySelector('.js-radius').style.display = 'none'
+			document.querySelector('.js-size').style.display = 'grid'
+		}
+	}
 } );
 
 
 
 document.querySelectorAll( '.js-radius input' ).forEach( input => 
 {
-	input.onchange = () => view3d.setRadius( input.value );
+	input.onchange = () => view3d.setProfileDiameter( input.value );
+} );
+
+document.querySelectorAll( '.js-size input' ).forEach( input => 
+{
+	input.onchange = () => view3d.setProfileSize( input.value.split('x')[0], input.value.split('x')[1] );
 } );
 
 
