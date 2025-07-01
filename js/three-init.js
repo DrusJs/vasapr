@@ -369,9 +369,9 @@ document.querySelectorAll( '.js-flat input' ).forEach( input =>
 			document.querySelector('.js-radius').style.display = 'none'
 			document.querySelector('.js-size').style.display = 'grid'
 		} else {
-			document.querySelector('.js-groupname').textContent = 'Size'
-			document.querySelector('.js-radius').style.display = 'none'
-			document.querySelector('.js-size').style.display = 'grid'
+			document.querySelector('.js-groupname').textContent = 'Diameter'
+			document.querySelector('.js-radius').style.display = 'grid'
+			document.querySelector('.js-size').style.display = 'none'
 		}
 	}
 } );
