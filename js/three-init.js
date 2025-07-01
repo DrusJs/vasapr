@@ -385,8 +385,8 @@ document.querySelectorAll( '.js-radius input' ).forEach( input =>
 
 document.querySelectorAll( '.js-size input' ).forEach( input => 
 {
-	console.log(input.value.split('x')[0], input.value.split('x')[1])
-	input.onchange = () => view3d.setProfileSize( input.value.split('x')[0], input.value.split('x')[1] );
+	console.log(input.value.split(' ')[0], input.value.split(' ')[1])
+	input.onchange = () => view3d.setProfileSize( input.value.split(' ')[0], input.value.split(' ')[1] );
 } );
 
 
