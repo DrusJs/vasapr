@@ -258,9 +258,9 @@ const View3D = () =>
 
 		render();
 		
-		load( 'profile', null );
 		load( 'stool1', 'Stul.glb' );
 		load( 'stool2', 'Stul2.glb' );
+		load( 'profile', null );
 	};
 
 	const fitToScreen = () =>
