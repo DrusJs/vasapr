@@ -1144,6 +1144,7 @@ body:has(.modal-wrapper.active) {
     display: none;
     flex-direction: column;
     gap: 10px;
+    align-self: flex-start;
 }
 
 .js-profile .change-group {
