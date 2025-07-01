@@ -1141,13 +1141,17 @@ body:has(.modal-wrapper.active) {
 }
 
 .change-group {
-    display: none;
+    display: flex;
     flex-direction: column;
     gap: 10px;
     align-self: flex-start;
 }
 
-.js-profile .change-group {
+.change-group.hide {
+    display: none;
+}
+
+.js-profile .change-group.hide {
     display: flex;
 }
 
