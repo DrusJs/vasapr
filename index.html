@@ -313,9 +313,9 @@
                                     <img src="img/inputsvg.svg" class="input__svg">
                                     <input type="email" class="input medium__text lightgrey__text" placeholder="Email">
                                 </div>
-                                <div class="input__wrapper">
+                                <div class="input__wrapper double-size">
                                     <img src="img/inputsvg.svg" class="input__svg">
-                                    <input type="tel" class="input medium__text lightgrey__text" placeholder="Contact">
+                                    <input type="tel" class="input medium__text lightgrey__text" placeholder="Message">
                                 </div>
                             </form>
                             <button class="button bg__white smallbold__text">Contact us 
@@ -350,6 +350,7 @@
                     <path d="M 4.9902344 3.9902344 A 1.0001 1.0001 0 0 0 4.2929688 5.7070312 L 10.585938 12 L 4.2929688 18.292969 A 1.0001 1.0001 0 1 0 5.7070312 19.707031 L 12 13.414062 L 18.292969 19.707031 A 1.0001 1.0001 0 1 0 19.707031 18.292969 L 13.414062 12 L 19.707031 5.7070312 A 1.0001 1.0001 0 0 0 18.980469 3.9902344 A 1.0001 1.0001 0 0 0 18.292969 4.2929688 L 12 10.585938 L 5.7070312 4.2929688 A 1.0001 1.0001 0 0 0 4.9902344 3.9902344 z"/>
                 </svg>
             </button>
+            <div class="modal-main">
             <div class="change-model">
 				<button data-model="profile">Rattan</button>
                 <button data-model="stool1" >Chair</button>
@@ -630,6 +631,35 @@
                     <canvas id="viewport"></canvas>
                 </div>
             </div>
+            <button class="button smallbold__text white__text" id="show-form">
+                Send
+                <svg class="button__img" width="27" height="16" viewBox="0 0 27 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M26.3175 8.86531C26.708 8.47479 26.708 7.84162 26.3175 7.4511L19.9535 1.08714C19.563 0.696611 18.9298 0.696611 18.5393 1.08714C18.1488 1.47766 18.1488 2.11082 18.5393 2.50135L24.1961 8.1582L18.5393 13.8151C18.1488 14.2056 18.1488 14.8387 18.5393 15.2293C18.9298 15.6198 19.563 15.6198 19.9535 15.2293L26.3175 8.86531ZM0.610352 9.1582H25.6104V7.1582H0.610352V9.1582Z" fill="white"></path>
+                </svg>
+            </button>
+            </div>
+
+            <form class="modal-form">
+                <h3 class="content__title">Please fill all for your reques</h3>
+                <div class="input__wrapper">
+                    <img src="img/inputsvg-accent.svg" class="input__svg">
+                    <input type="text" class="input medium__text lightgrey__text" placeholder="Name">
+                </div>
+                <div class="input__wrapper">
+                    <img src="img/inputsvg-accent.svg" class="input__svg">
+                    <input type="email" class="input medium__text lightgrey__text" placeholder="Email">
+                </div>
+                <div class="input__wrapper double-size">
+                    <img src="img/inputsvg-accent.svg" class="input__svg">
+                    <input type="tel" class="input medium__text lightgrey__text" placeholder="Message">
+                </div>
+                <button type="submit" class="button smallbold__text white__text">
+                    Send
+                    <svg class="button__img" width="27" height="16" viewBox="0 0 27 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M26.3175 8.86531C26.708 8.47479 26.708 7.84162 26.3175 7.4511L19.9535 1.08714C19.563 0.696611 18.9298 0.696611 18.5393 1.08714C18.1488 1.47766 18.1488 2.11082 18.5393 2.50135L24.1961 8.1582L18.5393 13.8151C18.1488 14.2056 18.1488 14.8387 18.5393 15.2293C18.9298 15.6198 19.563 15.6198 19.9535 15.2293L26.3175 8.86531ZM0.610352 9.1582H25.6104V7.1582H0.610352V9.1582Z" fill="white"></path>
+                    </svg>
+                </button>
+            </form>
         </div>
     </div>
 

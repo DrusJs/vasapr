@@ -45,9 +45,11 @@ if (document.querySelector('.header__link')) {
 
 const constructorOpenButton = document.querySelector('.constructor-open-button')
 const modal3d = document.querySelector('#modal-constructor')
+const showModalFormButton = document.querySelector('#show-form')
+
 if (constructorOpenButton) {
     const closeButton = modal3d.querySelector('.close-button')
-    constructorOpenButton.addEventListener('click', (e)=>{
+    constructorOpenButton.addEventListener('click', ()=>{
         modal3d.classList.add('active')
     })
     modal3d.addEventListener('touchstart', (e)=>{
@@ -60,8 +62,12 @@ if (constructorOpenButton) {
             modal3d.classList.remove('active')
         }
     })
-    closeButton.addEventListener('click', (e)=>{
+    closeButton.addEventListener('click', ()=>{
         modal3d.classList.remove('active')
+        modal3d.querySelector('.modal').classList.remove('send-form')
+    })
+    showModalFormButton.addEventListener('click', ()=>{
+        modal3d.querySelector('.modal').classList.add('send-form')
     })
 }
 
