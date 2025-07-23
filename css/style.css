@@ -1277,11 +1277,11 @@ body:has(.modal-wrapper.active) {
     max-width: 100px;
     border-radius: 4px;
     border: 1px solid #875F37;
-    transition: border 200ms ease-in-out;
+    transition: border 100ms ease-in-out;
 }
 
 .change-group-input input.err {
-    border: 1px solid rgb(187, 13, 13);
+    border: 2px solid rgb(187, 13, 13);
 }
 
 

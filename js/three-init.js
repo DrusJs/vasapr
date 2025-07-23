@@ -450,12 +450,14 @@ document.getElementById('quantity').addEventListener('keydown', function(e) {
                          this.value.slice(this.selectionEnd);
         
         const num = parseInt(newValue, 10);
-		modelQuantity = num
-		console.log(modelQuantity)
 
         if (newValue && (num < 1 || num > 100)) {
             e.preventDefault();
-        }
+			document.getElementById('quantity').classList.add('err')
+			setTimeout(()=>{ document.getElementById('quantity').classList.remove('err') }, 700)
+        } else {
+			modelQuantity = num
+		}
     }
 });
 
