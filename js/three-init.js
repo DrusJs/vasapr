@@ -439,6 +439,8 @@ document.getElementById('quantity').addEventListener('keydown', function(e) {
 
     if (!((e.key >= '0' && e.key <= '9') || allowedKeys.includes(e.key))) {
         e.preventDefault();
+		document.getElementById('quantity').classList.add('err')
+		setTimeout(()=>{ document.getElementById('quantity').classList.remove('err') }, 700)
         return;
     }
 

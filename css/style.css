@@ -1272,6 +1272,16 @@ body:has(.modal-wrapper.active) {
 .change-group-field input:checked + label span svg {
     stroke-dashoffset: 0;
 }
+.change-group-input input {
+    padding: 10px 8px;
+    max-width: 200px;
+    border: 1px solid #875F37;
+    transition: border 200ms ease-in-out;
+}
+
+.change-group-input input.err {
+    border: 1px solid rgb(187, 13, 13);
+}
 
 
 @media (max-width: 1800px) {
