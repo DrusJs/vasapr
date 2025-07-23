@@ -451,6 +451,7 @@ document.getElementById('quantity').addEventListener('keydown', function(e) {
         
         const num = parseInt(newValue, 10);
 		modelQuantity = num
+		console.log(modelQuantity)
 
         if (newValue && (num < 1 || num > 100)) {
             e.preventDefault();
