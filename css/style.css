@@ -1015,7 +1015,8 @@ body.dark-theme .burger-button path {
     color: var(--color-brown);
 }
 
-.modal.send-form .modal-form {
+.modal.send-form .modal-form,
+.modal-form.visible {
     display: flex;
 }
 
@@ -1312,6 +1313,15 @@ body:has(.modal-wrapper.active) {
     body.dark-theme .pref__preview {
         margin-bottom: 40px;
     }
+
+    .scroll__card,
+    .swiper__card {
+        height: 350px;
+    }
+
+    .card__img {
+        max-height: 170px;
+    }
 }
 
 @media (max-width: 876px) {
@@ -1504,4 +1514,11 @@ body:has(.modal-wrapper.active) {
         top: 6px;
         right: 6px;
     }
+}
+
+@media (max-width: 420px) {
+  .change-model button {
+    padding: 6px 12px;
+    font-size: 16px;
+  }
 }

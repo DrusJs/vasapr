@@ -340,6 +340,14 @@ const View3D = () =>
 
 const view3d = View3D();
 
+let modelData = 'Armchair'
+let modelColors = view3d.getColorList()
+let modelDiameter = view3d.getProfileDiameter()
+let modelFlat = view3d.getProfileFlat()
+let modelQuantity = 1
+
+
+
 view3d.addEventListener( 'load', ( event ) =>
 {
 	// TODO: нужно связать с радиокнопками!
@@ -350,7 +358,11 @@ view3d.addEventListener( 'load', ( event ) =>
 
 document.querySelectorAll( 'button[data-model]' ).forEach( element => 
 {
-	element.onclick = () => view3d.showModel( element.dataset.model );
+	element.onclick = () => {
+		view3d.showModel( element.dataset.model );
+		modelData = element.innerHTML
+		console.log(modelData)
+	}
 
 	if( element.classList.contains( 'active' ) )
 	{
@@ -373,6 +385,7 @@ document.querySelectorAll( '.js-flat input' ).forEach( input =>
 			document.querySelector('.js-radius').style.display = 'grid'
 			document.querySelector('.js-size').style.display = 'none'
 		}
+		modelFlat = view3d.getProfileFlat()
 	}
 } );
 
@@ -380,7 +393,10 @@ document.querySelectorAll( '.js-flat input' ).forEach( input =>
 
 document.querySelectorAll( '.js-radius input' ).forEach( input => 
 {
-	input.onchange = () => view3d.setProfileDiameter( input.value );
+	input.onchange = () => {
+		view3d.setProfileDiameter( input.value );
+		modelDiameter = view3d.getProfileDiameter()
+	}
 } );
 
 document.querySelectorAll( '.js-size input' ).forEach( input => 
@@ -412,7 +428,38 @@ document.querySelectorAll( '.grid-colors' )?.forEach( ( grid, index ) =>
 	{
 		// В index.html добавил цвет по умолчанию в каждую палитру цветов ( .color.active )
 		view3d.setColorByIndex( index, active.style.backgroundColor );
+		modelColors = view3d.getColorList()
 	}
 } );
 
+document.getElementById('quantity').addEventListener('keydown', function(e) {
+    const allowedKeys = [
+        'Backspace', 'Delete', 'Tab', 'ArrowLeft', 'ArrowRight', 'Home', 'End'
+    ];
+
+    if (!((e.key >= '0' && e.key <= '9') || allowedKeys.includes(e.key))) {
+        e.preventDefault();
+        return;
+    }
+
+    if (e.key >= '0' && e.key <= '9') {
+        const newValue = this.value.slice(0, this.selectionStart) + 
+                         e.key + 
+                         this.value.slice(this.selectionEnd);
+        
+        const num = parseInt(newValue, 10);
+		modelQuantity = num
+
+        if (newValue && (num < 1 || num > 100)) {
+            e.preventDefault();
+        }
+    }
+});
+
+document.getElementById('quantity').addEventListener('input', function(e) {
+    const num = parseInt(this.value, 10);
+    if (this.value && (num < 1 || num > 100)) {
+        this.value = '1';
+    }
+});
 

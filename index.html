@@ -54,7 +54,7 @@
                         <div class="main__description">
                             <p class="medium__text">Extrusion of recycled pellets. The process consists of melting of granules over  200 degrees of Celsium and cooling in a bath to get a  finished product </p>
                             <div class="main__buttons">
-                                <button class="button smallbold__text white__text">Contact us
+                                <button class="button smallbold__text white__text" data-modal="modal-feedback">Contact us
                                     <svg class="button__img" width="27" height="16" viewBox="0 0 27 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M26.3175 8.86531C26.708 8.47479 26.708 7.84162 26.3175 7.4511L19.9535 1.08714C19.563 0.696611 18.9298 0.696611 18.5393 1.08714C18.1488 1.47766 18.1488 2.11082 18.5393 2.50135L24.1961 8.1582L18.5393 13.8151C18.1488 14.2056 18.1488 14.8387 18.5393 15.2293C18.9298 15.6198 19.563 15.6198 19.9535 15.2293L26.3175 8.86531ZM0.610352 9.1582H25.6104V7.1582H0.610352V9.1582Z" fill="white"/>
                                     </svg>
@@ -351,295 +351,333 @@
                 </svg>
             </button>
             <div class="modal-main">
-            <div class="change-model">
-				<button data-model="profile">Rattan</button>
-                <button data-model="stool1" >Chair</button>
-                <button data-model="stool2" class="active">Armchair</button>
-                <div class="change-group">
-                    <h3>Type of waste</h3>
-                    <div class="change-group-field js-flat">
-                        <input type="radio" name="type" id="type1" value="flat">
-                        <label for="type1">
-                            <span>
-                                <svg width="12px" height="9px" viewBox="0 0 12 9">
-                                    <polyline points="1 5 4 8 11 1"></polyline>
-                                </svg>
-                            </span>
-                            flat
-                        </label>                        
-                        <input type="radio" name="type" id="type2" value="round" checked>
-                        <label for="type2">
-                            <span>
-                                <svg width="12px" height="9px" viewBox="0 0 12 9">
-                                    <polyline points="1 5 4 8 11 1"></polyline>
-                                </svg>
-                            </span>
-                            round
-                        </label>
+                <div class="change-model">
+                    <button data-model="profile">Rattan</button>
+                    <button data-model="stool1" >Chair</button>
+                    <button data-model="stool2" class="active">Armchair</button>
+                    <div class="change-group">
+                        <h3>Type of waste</h3>
+                        <div class="change-group-field js-flat">
+                            <input type="radio" name="type" id="type1" value="flat">
+                            <label for="type1">
+                                <span>
+                                    <svg width="12px" height="9px" viewBox="0 0 12 9">
+                                        <polyline points="1 5 4 8 11 1"></polyline>
+                                    </svg>
+                                </span>
+                                flat
+                            </label>                        
+                            <input type="radio" name="type" id="type2" value="round" checked>
+                            <label for="type2">
+                                <span>
+                                    <svg width="12px" height="9px" viewBox="0 0 12 9">
+                                        <polyline points="1 5 4 8 11 1"></polyline>
+                                    </svg>
+                                </span>
+                                round
+                            </label>
+                        </div>
+                    </div>
+                    <div class="change-group">
+                        <h3 class="js-groupname">Diameter</h3>
+                        <div class="change-group-field change-group-field-sm js-radius">
+                            <input type="radio" name="size" id="size1" value="2" checked>
+                            <label for="size1">
+                                <span>
+                                    <svg width="12px" height="9px" viewBox="0 0 12 9">
+                                        <polyline points="1 5 4 8 11 1"></polyline>
+                                    </svg>
+                                </span>2
+                            </label>
+                            
+                            <input type="radio" name="size" id="size2" value="3">
+                            <label for="size2">
+                                <span>
+                                    <svg width="12px" height="9px" viewBox="0 0 12 9">
+                                        <polyline points="1 5 4 8 11 1"></polyline>
+                                    </svg>
+                                </span>3
+                            </label>
+                            
+                            <input type="radio" name="size" id="size3" value="4">
+                            <label for="size3">
+                                <span>
+                                    <svg width="12px" height="9px" viewBox="0 0 12 9">
+                                        <polyline points="1 5 4 8 11 1"></polyline>
+                                    </svg>
+                                </span>4
+                            </label>
+                            
+                            <input type="radio" name="size" id="size4" value="5">
+                            <label for="size4">
+                                <span>
+                                    <svg width="12px" height="9px" viewBox="0 0 12 9">
+                                        <polyline points="1 5 4 8 11 1"></polyline>
+                                    </svg>
+                                </span>5
+                            </label>
+                            
+                            <input type="radio" name="size" id="size5" value="6">
+                            <label for="size5">
+                                <span>
+                                    <svg width="12px" height="9px" viewBox="0 0 12 9">
+                                        <polyline points="1 5 4 8 11 1"></polyline>
+                                    </svg>
+                                </span>6
+                            </label>
+                            
+                            <input type="radio" name="size" id="size6" value="7">
+                            <label for="size6">
+                                <span>
+                                    <svg width="12px" height="9px" viewBox="0 0 12 9">
+                                        <polyline points="1 5 4 8 11 1"></polyline>
+                                    </svg>
+                                </span>7
+                            </label>
+                        </div>
+                        <div class="change-group-field change-group-field-sm js-size" style="display: none;">
+                            <input type="radio" name="size2" id="size11" value="5 1" checked>
+                            <label for="size11">
+                                <span>
+                                    <svg width="12px" height="9px" viewBox="0 0 12 9">
+                                        <polyline points="1 5 4 8 11 1"></polyline>
+                                    </svg>
+                                </span>5х1
+                            </label>                        
+                            <input type="radio" name="size2" id="size12" value="7 2" checked>
+                            <label for="size12">
+                                <span>
+                                    <svg width="12px" height="9px" viewBox="0 0 12 9">
+                                        <polyline points="1 5 4 8 11 1"></polyline>
+                                    </svg>
+                                </span>7x2
+                            </label>
+                        </div>
+                    </div>
+                    <div class="change-group hide">
+                        <h3>Bay</h3>
+                        <div class="change-group-field">
+                            <input type="radio" name="bay" id="bay1" value="50m">
+                            <label for="bay1">
+                                <span>
+                                    <svg width="12px" height="9px" viewBox="0 0 12 9">
+                                        <polyline points="1 5 4 8 11 1"></polyline>
+                                    </svg>
+                                </span>
+                                50m
+                            </label>                        
+                            <input type="radio" name="bay" id="bay2" value="100m">
+                            <label for="bay2">
+                                <span>
+                                    <svg width="12px" height="9px" viewBox="0 0 12 9">
+                                        <polyline points="1 5 4 8 11 1"></polyline>
+                                    </svg>
+                                </span>
+                                100m
+                            </label>
+                        </div>
+                    </div>
+                    <div class="change-group hide">
+                        <h3>Drum</h3>
+                        <div class="change-group-field change-group-field-double">
+                            <input type="radio" name="bay" id="bay3" value="500m">
+                            <label for="bay3">
+                                <span>
+                                    <svg width="12px" height="9px" viewBox="0 0 12 9">
+                                        <polyline points="1 5 4 8 11 1"></polyline>
+                                    </svg>
+                                </span>
+                                500m
+                            </label>                        
+                            <input type="radio" name="bay" id="bay4" value="1000m">
+                            <label for="bay4">
+                                <span>
+                                    <svg width="12px" height="9px" viewBox="0 0 12 9">
+                                        <polyline points="1 5 4 8 11 1"></polyline>
+                                    </svg>
+                                </span>
+                                1000m
+                            </label>                      
+                            <input type="radio" name="bay" id="bay5" value="2000m">
+                            <label for="bay5">
+                                <span>
+                                    <svg width="12px" height="9px" viewBox="0 0 12 9">
+                                        <polyline points="1 5 4 8 11 1"></polyline>
+                                    </svg>
+                                </span>
+                                2000m
+                            </label>
+                        </div>
+                    </div>
+                    <div class="change-group hide">
+                        <h3>Quantity</h3>
+                        <div class="change-group-field change-group-field-double">
+                            <input type="text" id="quantity" value="1">
+                        </div>
                     </div>
                 </div>
-                <div class="change-group">
-                    <h3 class="js-groupname">Diameter</h3>
-                    <div class="change-group-field change-group-field-sm js-radius">
-                        <input type="radio" name="size" id="size1" value="2" checked>
-                        <label for="size1">
-                            <span>
-                                <svg width="12px" height="9px" viewBox="0 0 12 9">
-                                    <polyline points="1 5 4 8 11 1"></polyline>
-                                </svg>
-                            </span>2
-                        </label>
-                        
-                        <input type="radio" name="size" id="size2" value="3">
-                        <label for="size2">
-                            <span>
-                                <svg width="12px" height="9px" viewBox="0 0 12 9">
-                                    <polyline points="1 5 4 8 11 1"></polyline>
-                                </svg>
-                            </span>3
-                        </label>
-                        
-                        <input type="radio" name="size" id="size3" value="4">
-                        <label for="size3">
-                            <span>
-                                <svg width="12px" height="9px" viewBox="0 0 12 9">
-                                    <polyline points="1 5 4 8 11 1"></polyline>
-                                </svg>
-                            </span>4
-                        </label>
-                        
-                        <input type="radio" name="size" id="size4" value="5">
-                        <label for="size4">
-                            <span>
-                                <svg width="12px" height="9px" viewBox="0 0 12 9">
-                                    <polyline points="1 5 4 8 11 1"></polyline>
-                                </svg>
-                            </span>5
-                        </label>
-                        
-                        <input type="radio" name="size" id="size5" value="6">
-                        <label for="size5">
-                            <span>
-                                <svg width="12px" height="9px" viewBox="0 0 12 9">
-                                    <polyline points="1 5 4 8 11 1"></polyline>
-                                </svg>
-                            </span>6
-                        </label>
-                        
-                        <input type="radio" name="size" id="size6" value="7">
-                        <label for="size6">
-                            <span>
-                                <svg width="12px" height="9px" viewBox="0 0 12 9">
-                                    <polyline points="1 5 4 8 11 1"></polyline>
-                                </svg>
-                            </span>7
-                        </label>
-                    </div>
-                    <div class="change-group-field change-group-field-sm js-size" style="display: none;">
-                        <input type="radio" name="size2" id="size11" value="5 1" checked>
-                        <label for="size11">
-                            <span>
-                                <svg width="12px" height="9px" viewBox="0 0 12 9">
-                                    <polyline points="1 5 4 8 11 1"></polyline>
-                                </svg>
-                            </span>5х1
-                        </label>                        
-                        <input type="radio" name="size2" id="size12" value="7 2" checked>
-                        <label for="size12">
-                            <span>
-                                <svg width="12px" height="9px" viewBox="0 0 12 9">
-                                    <polyline points="1 5 4 8 11 1"></polyline>
-                                </svg>
-                            </span>7x2
-                        </label>
-                    </div>
-                </div>
-                <div class="change-group hide">
-                    <h3>Bay</h3>
-                    <div class="change-group-field">
-                        <input type="radio" name="bay" id="bay1" value="50m">
-                        <label for="bay1">
-                            <span>
-                                <svg width="12px" height="9px" viewBox="0 0 12 9">
-                                    <polyline points="1 5 4 8 11 1"></polyline>
-                                </svg>
-                            </span>
-                            50m
-                        </label>                        
-                        <input type="radio" name="bay" id="bay2" value="100m">
-                        <label for="bay2">
-                            <span>
-                                <svg width="12px" height="9px" viewBox="0 0 12 9">
-                                    <polyline points="1 5 4 8 11 1"></polyline>
-                                </svg>
-                            </span>
-                            100m
-                        </label>
-                    </div>
-                </div>
-                <div class="change-group hide">
-                    <h3>Drum</h3>
-                    <div class="change-group-field change-group-field-double">
-                        <input type="radio" name="bay" id="bay3" value="500m">
-                        <label for="bay3">
-                            <span>
-                                <svg width="12px" height="9px" viewBox="0 0 12 9">
-                                    <polyline points="1 5 4 8 11 1"></polyline>
-                                </svg>
-                            </span>
-                            500m
-                        </label>                        
-                        <input type="radio" name="bay" id="bay4" value="1000m">
-                        <label for="bay4">
-                            <span>
-                                <svg width="12px" height="9px" viewBox="0 0 12 9">
-                                    <polyline points="1 5 4 8 11 1"></polyline>
-                                </svg>
-                            </span>
-                            1000m
-                        </label>                      
-                        <input type="radio" name="bay" id="bay5" value="2000m">
-                        <label for="bay5">
-                            <span>
-                                <svg width="12px" height="9px" viewBox="0 0 12 9">
-                                    <polyline points="1 5 4 8 11 1"></polyline>
-                                </svg>
-                            </span>
-                            2000m
-                        </label>
+                <div class="constructor-flex">                
+                    <div class="color-changer" id="ui">
+                        <span class="tab-item active">Crop</span>
+                        <div class="grid-colors active">
+                            <div class="prev disabled"></div>
+                            <div class="next"></div>
+                            <div class="colors-page active">
+                                <div class="color" style="background-color: #c1121c;">RAL 3020</div>
+                                <div class="color" style="background-color: #f3752c;">RAL 2008</div>
+                                <div class="color" style="background-color: #eaf044;">RAL 1016 </div>
+                                <div class="color" style="background-color: #008f39;">RAL 6037</div>
+                                <div class="color white" style="background-color: #154889;">RAL 5005</div>
+                                <div class="color white" style="background-color: #2b2c7c;">RAL 5002</div>
+                                <div class="color white" style="background-color: #44322d;">RAL 8017</div>
+                                <div class="color white active" style="background-color: #000000;">RAL 9005</div>
+                                <div class="color" style="background-color: #FFFFFF;">RAL 9010</div>
+                            </div>
+                            <div class="colors-page">
+                                <div class="color white" style="background-color: #480436;">RAL 4007</div>
+                                <div class="color" style="background-color: #d14152;">RAL 3018</div>
+                                <div class="color" style="background-color: #c1121c;">RAL 3020 </div>
+                                <div class="color white" style="background-color: #ab2524;">RAL 3000</div>
+                                <div class="color white" style="background-color: #48533c;">RAL 6003</div>
+                                <div class="color white" style="background-color: #701f29;">RAL 3004</div>
+                                <div class="color" style="background-color: #e75b12;">RAL 2004</div>
+                                <div class="color" style="background-color: #f7ba0b">RAL 1003</div>
+                                <div class="color" style="background-color: #eec900;">RAL 1021</div>
+                            </div>
+                            <div class="colors-page">
+                                <div class="color white" style="background-color: #008754;">RAL 6024</div>
+                                <div class="color white" style="background-color: #0f4336;">RAL 6005</div>
+                                <div class="color white" style="background-color: #31403d;">RAL 6012 </div>
+                                <div class="color white" style="background-color: #07737a;">RAL 5021</div>
+                                <div class="color white" style="background-color: #154889;">RAL 5005</div>
+                                <div class="color white" style="background-color: #2a3756;">RAL 5003</div>
+                                <div class="color white" style="background-color: #154889;">RAL 5005</div>
+                                <div class="color white" style="background-color: #596163">RAL 7012</div>
+                                <div class="color white" style="background-color: #7e8182;">RAL 9023</div>
+                            </div>
+                        </div>
+                        <span class="tab-item">Base</span>
+                        <div class="grid-colors">
+                            <div class="prev disabled"></div>
+                            <div class="next"></div>
+                            <div class="colors-page active">
+                                <div class="color" style="background-color: #c1121c;">RAL 3020</div>
+                                <div class="color" style="background-color: #f3752c;">RAL 2008</div>
+                                <div class="color" style="background-color: #eaf044;">RAL 1016 </div>
+                                <div class="color" style="background-color: #008f39;">RAL 6037</div>
+                                <div class="color white" style="background-color: #154889;">RAL 5005</div>
+                                <div class="color white" style="background-color: #2b2c7c;">RAL 5002</div>
+                                <div class="color white" style="background-color: #44322d;">RAL 8017</div>
+                                <div class="color white" style="background-color: #000000;">RAL 9005</div>
+                                <div class="color active" style="background-color: #FFFFFF;">RAL 9010</div>
+                            </div>
+                            <div class="colors-page">
+                                <div class="color white" style="background-color: #480436;">RAL 4007</div>
+                                <div class="color" style="background-color: #d14152;">RAL 3018</div>
+                                <div class="color" style="background-color: #c1121c;">RAL 3020 </div>
+                                <div class="color white" style="background-color: #ab2524;">RAL 3000</div>
+                                <div class="color white" style="background-color: #48533c;">RAL 6003</div>
+                                <div class="color white" style="background-color: #701f29;">RAL 3004</div>
+                                <div class="color" style="background-color: #e75b12;">RAL 2004</div>
+                                <div class="color" style="background-color: #f7ba0b">RAL 1003</div>
+                                <div class="color" style="background-color: #eec900;">RAL 1021</div>
+                            </div>
+                            <div class="colors-page">
+                                <div class="color white" style="background-color: #008754;">RAL 6024</div>
+                                <div class="color white" style="background-color: #0f4336;">RAL 6005</div>
+                                <div class="color white" style="background-color: #31403d;">RAL 6012 </div>
+                                <div class="color white" style="background-color: #07737a;">RAL 5021</div>
+                                <div class="color white" style="background-color: #154889;">RAL 5005</div>
+                                <div class="color white" style="background-color: #2a3756;">RAL 5003</div>
+                                <div class="color white" style="background-color: #154889;">RAL 5005</div>
+                                <div class="color white" style="background-color: #596163">RAL 7012</div>
+                                <div class="color white" style="background-color: #7e8182;">RAL 9023</div>
+                            </div>
+                        </div>
+                        <span class="tab-item">Slub</span>
+                        <div class="grid-colors">
+                            <div class="prev disabled"></div>
+                            <div class="next"></div>
+                            <div class="colors-page active">
+                                <div class="color" style="background-color: #c1121c;">RAL 3020</div>
+                                <div class="color" style="background-color: #f3752c;">RAL 2008</div>
+                                <div class="color" style="background-color: #eaf044;">RAL 1016 </div>
+                                <div class="color" style="background-color: #008f39;">RAL 6037</div>
+                                <div class="color white" style="background-color: #154889;">RAL 5005</div>
+                                <div class="color white" style="background-color: #2b2c7c;">RAL 5002</div>
+                                <div class="color white" style="background-color: #44322d;">RAL 8017</div>
+                                <div class="color white" style="background-color: #000000;">RAL 9005</div>
+                                <div class="color" style="background-color: #FFFFFF;">RAL 9010</div>
+                            </div>
+                            <div class="colors-page">
+                                <div class="color white" style="background-color: #480436;">RAL 4007</div>
+                                <div class="color" style="background-color: #d14152;">RAL 3018</div>
+                                <div class="color" style="background-color: #c1121c;">RAL 3020 </div>
+                                <div class="color white" style="background-color: #ab2524;">RAL 3000</div>
+                                <div class="color white" style="background-color: #48533c;">RAL 6003</div>
+                                <div class="color white" style="background-color: #701f29;">RAL 3004</div>
+                                <div class="color" style="background-color: #e75b12;">RAL 2004</div>
+                                <div class="color active" style="background-color: #f7ba0b">RAL 1003</div>
+                                <div class="color" style="background-color: #eec900;">RAL 1021</div>
+                            </div>
+                            <div class="colors-page">
+                                <div class="color white" style="background-color: #008754;">RAL 6024</div>
+                                <div class="color white" style="background-color: #0f4336;">RAL 6005</div>
+                                <div class="color white" style="background-color: #31403d;">RAL 6012 </div>
+                                <div class="color white" style="background-color: #07737a;">RAL 5021</div>
+                                <div class="color white" style="background-color: #154889;">RAL 5005</div>
+                                <div class="color white" style="background-color: #2a3756;">RAL 5003</div>
+                                <div class="color white" style="background-color: #154889;">RAL 5005</div>
+                                <div class="color white" style="background-color: #596163">RAL 7012</div>
+                                <div class="color white" style="background-color: #7e8182;">RAL 9023</div>
+                            </div>
+                        </div>
+                    </div>        
+                <div id="viewportContainer" class="view-model">
+                        <canvas id="viewport"></canvas>
                     </div>
                 </div>
-            </div>
-            <div class="constructor-flex">                
-                <div class="color-changer" id="ui">
-                    <span class="tab-item active">Crop</span>
-                    <div class="grid-colors active">
-                        <div class="prev disabled"></div>
-                        <div class="next"></div>
-                        <div class="colors-page active">
-                            <div class="color" style="background-color: #c1121c;">RAL 3020</div>
-                            <div class="color" style="background-color: #f3752c;">RAL 2008</div>
-                            <div class="color" style="background-color: #eaf044;">RAL 1016 </div>
-                            <div class="color" style="background-color: #008f39;">RAL 6037</div>
-                            <div class="color white" style="background-color: #154889;">RAL 5005</div>
-                            <div class="color white" style="background-color: #2b2c7c;">RAL 5002</div>
-                            <div class="color white" style="background-color: #44322d;">RAL 8017</div>
-                            <div class="color white active" style="background-color: #000000;">RAL 9005</div>
-                            <div class="color" style="background-color: #FFFFFF;">RAL 9010</div>
-                        </div>
-                        <div class="colors-page">
-                            <div class="color white" style="background-color: #480436;">RAL 4007</div>
-                            <div class="color" style="background-color: #d14152;">RAL 3018</div>
-                            <div class="color" style="background-color: #c1121c;">RAL 3020 </div>
-                            <div class="color white" style="background-color: #ab2524;">RAL 3000</div>
-                            <div class="color white" style="background-color: #48533c;">RAL 6003</div>
-                            <div class="color white" style="background-color: #701f29;">RAL 3004</div>
-                            <div class="color" style="background-color: #e75b12;">RAL 2004</div>
-                            <div class="color" style="background-color: #f7ba0b">RAL 1003</div>
-                            <div class="color" style="background-color: #eec900;">RAL 1021</div>
-                        </div>
-                        <div class="colors-page">
-                            <div class="color white" style="background-color: #008754;">RAL 6024</div>
-                            <div class="color white" style="background-color: #0f4336;">RAL 6005</div>
-                            <div class="color white" style="background-color: #31403d;">RAL 6012 </div>
-                            <div class="color white" style="background-color: #07737a;">RAL 5021</div>
-                            <div class="color white" style="background-color: #154889;">RAL 5005</div>
-                            <div class="color white" style="background-color: #2a3756;">RAL 5003</div>
-                            <div class="color white" style="background-color: #154889;">RAL 5005</div>
-                            <div class="color white" style="background-color: #596163">RAL 7012</div>
-                            <div class="color white" style="background-color: #7e8182;">RAL 9023</div>
-                        </div>
-                    </div>
-                    <span class="tab-item">Base</span>
-                    <div class="grid-colors">
-                        <div class="prev disabled"></div>
-                        <div class="next"></div>
-                        <div class="colors-page active">
-                            <div class="color" style="background-color: #c1121c;">RAL 3020</div>
-                            <div class="color" style="background-color: #f3752c;">RAL 2008</div>
-                            <div class="color" style="background-color: #eaf044;">RAL 1016 </div>
-                            <div class="color" style="background-color: #008f39;">RAL 6037</div>
-                            <div class="color white" style="background-color: #154889;">RAL 5005</div>
-                            <div class="color white" style="background-color: #2b2c7c;">RAL 5002</div>
-                            <div class="color white" style="background-color: #44322d;">RAL 8017</div>
-                            <div class="color white" style="background-color: #000000;">RAL 9005</div>
-                            <div class="color active" style="background-color: #FFFFFF;">RAL 9010</div>
-                        </div>
-                        <div class="colors-page">
-                            <div class="color white" style="background-color: #480436;">RAL 4007</div>
-                            <div class="color" style="background-color: #d14152;">RAL 3018</div>
-                            <div class="color" style="background-color: #c1121c;">RAL 3020 </div>
-                            <div class="color white" style="background-color: #ab2524;">RAL 3000</div>
-                            <div class="color white" style="background-color: #48533c;">RAL 6003</div>
-                            <div class="color white" style="background-color: #701f29;">RAL 3004</div>
-                            <div class="color" style="background-color: #e75b12;">RAL 2004</div>
-                            <div class="color" style="background-color: #f7ba0b">RAL 1003</div>
-                            <div class="color" style="background-color: #eec900;">RAL 1021</div>
-                        </div>
-                        <div class="colors-page">
-                            <div class="color white" style="background-color: #008754;">RAL 6024</div>
-                            <div class="color white" style="background-color: #0f4336;">RAL 6005</div>
-                            <div class="color white" style="background-color: #31403d;">RAL 6012 </div>
-                            <div class="color white" style="background-color: #07737a;">RAL 5021</div>
-                            <div class="color white" style="background-color: #154889;">RAL 5005</div>
-                            <div class="color white" style="background-color: #2a3756;">RAL 5003</div>
-                            <div class="color white" style="background-color: #154889;">RAL 5005</div>
-                            <div class="color white" style="background-color: #596163">RAL 7012</div>
-                            <div class="color white" style="background-color: #7e8182;">RAL 9023</div>
-                        </div>
-                    </div>
-                    <span class="tab-item">Slub</span>
-                    <div class="grid-colors">
-                        <div class="prev disabled"></div>
-                        <div class="next"></div>
-                        <div class="colors-page active">
-                            <div class="color" style="background-color: #c1121c;">RAL 3020</div>
-                            <div class="color" style="background-color: #f3752c;">RAL 2008</div>
-                            <div class="color" style="background-color: #eaf044;">RAL 1016 </div>
-                            <div class="color" style="background-color: #008f39;">RAL 6037</div>
-                            <div class="color white" style="background-color: #154889;">RAL 5005</div>
-                            <div class="color white" style="background-color: #2b2c7c;">RAL 5002</div>
-                            <div class="color white" style="background-color: #44322d;">RAL 8017</div>
-                            <div class="color white" style="background-color: #000000;">RAL 9005</div>
-                            <div class="color" style="background-color: #FFFFFF;">RAL 9010</div>
-                        </div>
-                        <div class="colors-page">
-                            <div class="color white" style="background-color: #480436;">RAL 4007</div>
-                            <div class="color" style="background-color: #d14152;">RAL 3018</div>
-                            <div class="color" style="background-color: #c1121c;">RAL 3020 </div>
-                            <div class="color white" style="background-color: #ab2524;">RAL 3000</div>
-                            <div class="color white" style="background-color: #48533c;">RAL 6003</div>
-                            <div class="color white" style="background-color: #701f29;">RAL 3004</div>
-                            <div class="color" style="background-color: #e75b12;">RAL 2004</div>
-                            <div class="color active" style="background-color: #f7ba0b">RAL 1003</div>
-                            <div class="color" style="background-color: #eec900;">RAL 1021</div>
-                        </div>
-                        <div class="colors-page">
-                            <div class="color white" style="background-color: #008754;">RAL 6024</div>
-                            <div class="color white" style="background-color: #0f4336;">RAL 6005</div>
-                            <div class="color white" style="background-color: #31403d;">RAL 6012 </div>
-                            <div class="color white" style="background-color: #07737a;">RAL 5021</div>
-                            <div class="color white" style="background-color: #154889;">RAL 5005</div>
-                            <div class="color white" style="background-color: #2a3756;">RAL 5003</div>
-                            <div class="color white" style="background-color: #154889;">RAL 5005</div>
-                            <div class="color white" style="background-color: #596163">RAL 7012</div>
-                            <div class="color white" style="background-color: #7e8182;">RAL 9023</div>
-                        </div>
-                    </div>
-                </div>        
-               <div id="viewportContainer" class="view-model">
-                    <canvas id="viewport"></canvas>
-                </div>
-            </div>
-            <button class="button smallbold__text white__text" id="show-form">
-                Send
-                <svg class="button__img" width="27" height="16" viewBox="0 0 27 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M26.3175 8.86531C26.708 8.47479 26.708 7.84162 26.3175 7.4511L19.9535 1.08714C19.563 0.696611 18.9298 0.696611 18.5393 1.08714C18.1488 1.47766 18.1488 2.11082 18.5393 2.50135L24.1961 8.1582L18.5393 13.8151C18.1488 14.2056 18.1488 14.8387 18.5393 15.2293C18.9298 15.6198 19.563 15.6198 19.9535 15.2293L26.3175 8.86531ZM0.610352 9.1582H25.6104V7.1582H0.610352V9.1582Z" fill="white"></path>
-                </svg>
-            </button>
+                <button class="button smallbold__text white__text" id="show-form">
+                    Send
+                    <svg class="button__img" width="27" height="16" viewBox="0 0 27 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M26.3175 8.86531C26.708 8.47479 26.708 7.84162 26.3175 7.4511L19.9535 1.08714C19.563 0.696611 18.9298 0.696611 18.5393 1.08714C18.1488 1.47766 18.1488 2.11082 18.5393 2.50135L24.1961 8.1582L18.5393 13.8151C18.1488 14.2056 18.1488 14.8387 18.5393 15.2293C18.9298 15.6198 19.563 15.6198 19.9535 15.2293L26.3175 8.86531ZM0.610352 9.1582H25.6104V7.1582H0.610352V9.1582Z" fill="white"></path>
+                    </svg>
+                </button>
             </div>
 
             <form class="modal-form">
+                <h3 class="content__title">Please fill all for your reques</h3>
+                <div class="input__wrapper">
+                    <img src="img/inputsvg-accent.svg" class="input__svg">
+                    <input type="text" class="input medium__text lightgrey__text" placeholder="Name">
+                </div>
+                <div class="input__wrapper">
+                    <img src="img/inputsvg-accent.svg" class="input__svg">
+                    <input type="email" class="input medium__text lightgrey__text" placeholder="Email">
+                </div>
+                <div class="input__wrapper double-size">
+                    <img src="img/inputsvg-accent.svg" class="input__svg">
+                    <input type="tel" class="input medium__text lightgrey__text" placeholder="Message">
+                </div>
+                <button type="submit" class="button smallbold__text white__text">
+                    Send
+                    <svg class="button__img" width="27" height="16" viewBox="0 0 27 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M26.3175 8.86531C26.708 8.47479 26.708 7.84162 26.3175 7.4511L19.9535 1.08714C19.563 0.696611 18.9298 0.696611 18.5393 1.08714C18.1488 1.47766 18.1488 2.11082 18.5393 2.50135L24.1961 8.1582L18.5393 13.8151C18.1488 14.2056 18.1488 14.8387 18.5393 15.2293C18.9298 15.6198 19.563 15.6198 19.9535 15.2293L26.3175 8.86531ZM0.610352 9.1582H25.6104V7.1582H0.610352V9.1582Z" fill="white"></path>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+        <div class="modal-wrapper" id="modal-feedback">
+        <div class="modal">
+            <button class="close-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48px" height="48px">
+                    <path d="M 4.9902344 3.9902344 A 1.0001 1.0001 0 0 0 4.2929688 5.7070312 L 10.585938 12 L 4.2929688 18.292969 A 1.0001 1.0001 0 1 0 5.7070312 19.707031 L 12 13.414062 L 18.292969 19.707031 A 1.0001 1.0001 0 1 0 19.707031 18.292969 L 13.414062 12 L 19.707031 5.7070312 A 1.0001 1.0001 0 0 0 18.980469 3.9902344 A 1.0001 1.0001 0 0 0 18.292969 4.2929688 L 12 10.585938 L 5.7070312 4.2929688 A 1.0001 1.0001 0 0 0 4.9902344 3.9902344 z"/>
+                </svg>
+            </button>
+
+            <form class="modal-form visible">
                 <h3 class="content__title">Please fill all for your reques</h3>
                 <div class="input__wrapper">
                     <img src="img/inputsvg-accent.svg" class="input__svg">

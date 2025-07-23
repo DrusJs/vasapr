@@ -6,6 +6,28 @@ if (document.querySelector('.faq__button')) {
     })
 }
 
+const showButton = document.querySelector('[data-modal]')
+
+if (showButton) {
+    const modal = document.getElementById(showButton.dataset.modal)
+    const closeButton = modal.querySelector('.close-button')
+    
+    showButton.addEventListener('click', ()=>{
+        modal.classList.add('active')
+    })
+
+    if (closeButton) {
+        closeButton.addEventListener('click', (e)=>{
+            modal.classList.remove('active')
+        })
+    }
+
+    modal.addEventListener('click', (e)=>{
+        if (e.target.classList.contains('modal-wrapper')) {
+            modal.classList.remove('active')
+        }
+    })
+}
 
 let pageUpButton = document.querySelector('.page-up__button')
 if (pageUpButton) {
