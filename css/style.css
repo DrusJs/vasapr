@@ -1273,8 +1273,9 @@ body:has(.modal-wrapper.active) {
     stroke-dashoffset: 0;
 }
 .change-group-input input {
-    padding: 10px 8px;
-    max-width: 200px;
+    padding: 4px 12px;
+    max-width: 100px;
+    border-radius: 4px;
     border: 1px solid #875F37;
     transition: border 200ms ease-in-out;
 }
